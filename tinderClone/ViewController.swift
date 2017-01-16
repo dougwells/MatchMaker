@@ -59,8 +59,8 @@ class ViewController: UIViewController {
                     if success {
                         print("New user \(user.username!) saved")
                         
-                        self.createAlert(title: "Success!", message: "Welcome \(user.username!)")
-                        //self.performSegue(withIdentifier: "showUserTable", sender: self)
+                        self.performSegue(withIdentifier: "showProfile", sender: self)
+                        
                     } else {
                         if error != nil {
                             print("Error saving user", error)
@@ -77,9 +77,7 @@ class ViewController: UIViewController {
                     self.stopSpinner()
                     if (user != nil) {
                         
-                    self.createAlert(title: "Success!", message: "Welcome back \(user!.username!)")
-                        print("Existing user logged in", user!.username!)
-                        //self.performSegue(withIdentifier: "showUserTable", sender: self)
+                        self.performSegue(withIdentifier: "showProfile", sender: self)
 
                     }
                     if error != nil {
