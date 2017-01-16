@@ -25,6 +25,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     
     @IBOutlet weak var imageToPost: UIImageView!
     
+    @IBOutlet weak var isFemaleSwitch: UISwitch!
+    
+    @IBOutlet weak var likesWomenSwitch: UISwitch!
     
     @IBAction func genderMaleSwitch(_ sender: UISwitch) {
         if sender.isOn {
@@ -106,18 +109,16 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     @IBAction func updateProfile(_ sender: UIButton) {
         
         self.startSpinner()
-        let tinderProfiles = PFObject(className: "tinderProfiles")
-        tinderProfiles["userid"] = user?.objectId
-        tinderProfiles["genderMale"] = genderMale
-        tinderProfiles["interestMale"] = interestMale
-        tinderProfiles["isGay"] = isGay
+        user?["genderMale"] = genderMale
+        user?["interestMale"] = interestMale
+        user?["isGay"] = isGay
         
         
         let imageData = UIImageJPEGRepresentation(imageToPost.image!, 0.5)
         let imageFile = PFFile(name: "image.jpeg", data: imageData!)
-        tinderProfiles["userImage"] = imageFile
+        user?["userImage"] = imageFile
         
-        tinderProfiles.saveInBackground { (success, error) in
+        user?.saveInBackground { (success, error) in
             self.stopSpinner()
             if error != nil {
                 self.createAlert(title: "Error Saving Image", message: "Please try again later.  Thanks")
@@ -125,7 +126,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
                 
                 self.createAlert(title: "Successfull", message: "Your image profile has been saved")
                 
-                self.defaultImage = true
+              /* self.defaultImage = true
                 
                 if self.genderMale {
                     
@@ -136,12 +137,25 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
                     self.imageToPost.image = self.femaleImage
                     
                 }
+            */
                 
             }
         }
     } //end updateProfile
     
     
+    @IBAction func logoutButton(_ sender: Any) {
+        
+        PFUser.logOutInBackground { (error) in
+            if error != nil {
+                print("Error logging user out")
+            } else {
+                print("Existing user logged out")
+                self.performSegue(withIdentifier: "showLoginPage", sender: self)
+            }
+        }
+        
+    }
     
     func createAlert(title: String, message: String ) {
         //creat alert
@@ -184,6 +198,34 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        //Set switches & image based on saved user in Parse
+        if let isMale = user?["genderMale"] as? Bool {
+            isFemaleSwitch.setOn(!isMale, animated: false)
+            genderMale = isMale
+        }
+        
+        if let likesMen = user?["interestMale"] as? Bool {
+            likesWomenSwitch.setOn(!likesMen, animated: false)
+            interestMale = likesMen
+        }
+        
+        if let savedImage = user?["userImage"] as? PFFile {
+            
+            savedImage.getDataInBackground(block: { (data, error) in
+                if let imageData = data {
+                    if let downloadedImage = UIImage(data: imageData) {
+                        self.imageToPost.image = downloadedImage
+                        self.defaultImage = false
+                    }
+                }
+            })
+
+        }
+        
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

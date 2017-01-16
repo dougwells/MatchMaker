@@ -143,7 +143,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGa-D6-QoC">
-                                <rect key="frame" x="97" y="563" width="180" height="64"/>
+                                <rect key="frame" x="97" y="537" width="180" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.32126998901367188" green="0.51843303442001343" blue="0.42053693532943726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
@@ -195,11 +195,25 @@
                                     <action selector="importImage:" destination="44g-ym-M5T" eventType="touchUpInside" id="fKR-qt-g1G"/>
                                 </connections>
                             </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cYG-kN-N5k">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Logout" id="fwR-B8-ejz">
+                                        <connections>
+                                            <action selector="logoutButton:" destination="44g-ym-M5T" id="tSk-Bb-mDy"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="showLoginPage" id="yR7-XE-ZCT"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="imageToPost" destination="qm8-w2-DDt" id="Zil-5D-FhS"/>
+                        <outlet property="isFemaleSwitch" destination="DCQ-yS-urB" id="VBF-OC-gQm"/>
+                        <outlet property="likesWomenSwitch" destination="p6c-4T-NYA" id="Rci-X1-S7u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lDO-xF-wJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>

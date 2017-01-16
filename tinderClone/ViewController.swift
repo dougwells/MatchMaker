@@ -54,6 +54,14 @@ class ViewController: UIViewController {
                 let user = PFUser()
                 user.username = emailTextField.text
                 user.password = passwordTextField.text
+                
+                
+                //Let public write to User field (ACL)
+                let acl = PFACL()
+                acl.getPublicWriteAccess = true
+                user.acl = acl
+                
+                
                 user.signUpInBackground { (success, error) -> Void in
                     self.stopSpinner()
                     if success {
