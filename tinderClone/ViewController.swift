@@ -71,7 +71,7 @@ class ViewController: UIViewController {
                         
                     } else {
                         if error != nil {
-                            print("Error saving user", error)
+                            print("Error saving user")
                             var displayErrorMessage = "Please try again later ..."
                             if let errorMessage = error as NSError? {
                                 displayErrorMessage = errorMessage.userInfo["error"] as! String
@@ -83,11 +83,7 @@ class ViewController: UIViewController {
             } else {    //Login mode
                 PFUser.logInWithUsername(inBackground: emailTextField.text!, password: passwordTextField.text!, block: { (user, error) in
                     self.stopSpinner()
-                    if (user != nil) {
-                        
-                        self.performSegue(withIdentifier: "showProfile", sender: self)
 
-                    }
                     if error != nil {
                         print("Error logging in existing user", error)
                         var displayErrorMessage = "Please try again later ..."
@@ -95,6 +91,11 @@ class ViewController: UIViewController {
                             displayErrorMessage = errorMessage.userInfo["error"] as! String
                         }
                         self.createAlert(title: "Login Error", message: displayErrorMessage)
+                        
+                    } else if (user != nil) {
+                        
+                        self.performSegue(withIdentifier: "showProfile", sender: self)
+                        
                     }
                 })
             }
