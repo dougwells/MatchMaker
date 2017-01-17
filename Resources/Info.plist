@@ -47,6 +47,8 @@
 	<string>Choose a photo of yourself</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>amazonaws.com</key>

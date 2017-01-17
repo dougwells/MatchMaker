@@ -125,23 +125,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
             } else {
                 
                 self.createAlert(title: "Successfull", message: "Your image profile has been saved")
-                
-              /* self.defaultImage = true
-                
-                if self.genderMale {
-                    
-                  self.imageToPost.image = self.maleImage
-                    
-                } else {
-                    
-                    self.imageToPost.image = self.femaleImage
-                    
-                }
-            */
-                
             }
         }
     } //end updateProfile
+    
+
     
     
     @IBAction func logoutButton(_ sender: Any) {
@@ -186,6 +174,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         activityIndicator.stopAnimating()
         UIApplication.shared.endIgnoringInteractionEvents()
     }
+    
 
 
 
@@ -220,13 +209,9 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
                     }
                 }
             })
-
         }
-        
-        
-        
-        
-    }
+ 
+    } //End viewDidLoad
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
