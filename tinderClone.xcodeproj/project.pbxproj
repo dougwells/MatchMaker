@@ -11,6 +11,7 @@
 		70A7C10B1E2D2C7A0068B536 /* cruiseCartoon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70A7C10A1E2D2C7A0068B536 /* cruiseCartoon.jpg */; };
 		70A7C10F1E2D2E550068B536 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A7C10E1E2D2E550068B536 /* ProfileViewController.swift */; };
 		70A7C1111E2D6CC60068B536 /* megCartoon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70A7C1101E2D6CC60068B536 /* megCartoon.jpg */; };
+		70A7C1131E2FBD360068B536 /* ChooseMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A7C1121E2FBD360068B536 /* ChooseMatchViewController.swift */; };
 		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
@@ -28,6 +29,7 @@
 		70A7C10A1E2D2C7A0068B536 /* cruiseCartoon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cruiseCartoon.jpg; sourceTree = "<group>"; };
 		70A7C10E1E2D2E550068B536 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		70A7C1101E2D6CC60068B536 /* megCartoon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = megCartoon.jpg; sourceTree = "<group>"; };
+		70A7C1121E2FBD360068B536 /* ChooseMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseMatchViewController.swift; sourceTree = "<group>"; };
 		70DAB57D1E2ADE790006108E /* tinderClone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tinderClone.entitlements; sourceTree = "<group>"; };
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				70DAB57D1E2ADE790006108E /* tinderClone.entitlements */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
+				70A7C1121E2FBD360068B536 /* ChooseMatchViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
 				70A7C10E1E2D2E550068B536 /* ProfileViewController.swift */,
 			);
@@ -210,6 +213,7 @@
 				70A7C10F1E2D2E550068B536 /* ProfileViewController.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
+				70A7C1131E2FBD360068B536 /* ChooseMatchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
