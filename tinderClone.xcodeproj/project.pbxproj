@@ -12,6 +12,9 @@
 		70A7C10F1E2D2E550068B536 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A7C10E1E2D2E550068B536 /* ProfileViewController.swift */; };
 		70A7C1111E2D6CC60068B536 /* megCartoon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70A7C1101E2D6CC60068B536 /* megCartoon.jpg */; };
 		70A7C1131E2FBD360068B536 /* ChooseMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A7C1121E2FBD360068B536 /* ChooseMatchViewController.swift */; };
+		70A7C1151E3024E90068B536 /* jessicaRabbit.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70A7C1141E3024E90068B536 /* jessicaRabbit.jpg */; };
+		70A7C1171E30257D0068B536 /* jessica2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 70A7C1161E30257D0068B536 /* jessica2.jpeg */; };
+		70A7C1191E3025CD0068B536 /* thelma.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 70A7C1181E3025CD0068B536 /* thelma.jpeg */; };
 		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
@@ -30,6 +33,9 @@
 		70A7C10E1E2D2E550068B536 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		70A7C1101E2D6CC60068B536 /* megCartoon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = megCartoon.jpg; sourceTree = "<group>"; };
 		70A7C1121E2FBD360068B536 /* ChooseMatchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseMatchViewController.swift; sourceTree = "<group>"; };
+		70A7C1141E3024E90068B536 /* jessicaRabbit.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jessicaRabbit.jpg; sourceTree = "<group>"; };
+		70A7C1161E30257D0068B536 /* jessica2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = jessica2.jpeg; sourceTree = "<group>"; };
+		70A7C1181E3025CD0068B536 /* thelma.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thelma.jpeg; sourceTree = "<group>"; };
 		70DAB57D1E2ADE790006108E /* tinderClone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tinderClone.entitlements; sourceTree = "<group>"; };
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -70,6 +76,9 @@
 				814C3AC81B69877600E307BB /* Images.xcassets */,
 				814C3AC91B69877600E307BB /* Info.plist */,
 				70A7C1041E2D15090068B536 /* Dating2.jpg */,
+				70A7C1181E3025CD0068B536 /* thelma.jpeg */,
+				70A7C1161E30257D0068B536 /* jessica2.jpeg */,
+				70A7C1141E3024E90068B536 /* jessicaRabbit.jpg */,
 				70A7C10A1E2D2C7A0068B536 /* cruiseCartoon.jpg */,
 				70A7C1101E2D6CC60068B536 /* megCartoon.jpg */,
 			);
@@ -196,7 +205,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				70A7C1051E2D15090068B536 /* Dating2.jpg in Resources */,
+				70A7C1171E30257D0068B536 /* jessica2.jpeg in Resources */,
+				70A7C1191E3025CD0068B536 /* thelma.jpeg in Resources */,
 				70A7C10B1E2D2C7A0068B536 /* cruiseCartoon.jpg in Resources */,
+				70A7C1151E3024E90068B536 /* jessicaRabbit.jpg in Resources */,
 				814C3ACA1B69877600E307BB /* Main.storyboard in Resources */,
 				814C3ACB1B69877600E307BB /* Images.xcassets in Resources */,
 				70A7C1111E2D6CC60068B536 /* megCartoon.jpg in Resources */,

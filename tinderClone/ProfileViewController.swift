@@ -145,6 +145,11 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         
     }
     
+    @IBAction func findAMatch(_ sender: UIBarButtonItem) {
+        
+        self.performSegue(withIdentifier: "profileToFindMatch", sender: self)
+    }
+    
     func createAlert(title: String, message: String ) {
         //creat alert
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)

@@ -7,28 +7,33 @@
 //
 
 import UIKit
+import Parse
 
 class ChooseMatchViewController: UIViewController {
+    
+    @IBOutlet weak var mateImage: UIImageView!
+    
+    @IBAction func matchToLogin(_ sender: Any) {
+        
+        PFUser.logOutInBackground { (error) in
+            if error != nil {
+                print("Error logging user out")
+            } else {
+                print("Existing user logged out")
+                self.performSegue(withIdentifier: "matchToLogin", sender: self)
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-            
-            //Add element to the screen programatically (w/o storyboard)
-            let label = UILabel(frame: CGRect(x: self.view.bounds.width/2 - 100, y: self.view.bounds.height/2 - 50, width: 200, height: 100))
-            
-            label.text = "Drag me"
-            label.textAlignment = NSTextAlignment.center
-            
-            view.addSubview(label)
             
             //Recognizer user gesture "pan"/swipe & run fn "wasDragged"
             let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.wasDragged(gestureRecognizer:)))
             
             //Make label interactive (by default a label is not)
-            label.isUserInteractionEnabled = true
-            label.addGestureRecognizer(gesture)
+            mateImage.isUserInteractionEnabled = true
+            mateImage.addGestureRecognizer(gesture)
             
         }
         
@@ -39,18 +44,18 @@ class ChooseMatchViewController: UIViewController {
             let translation = gestureRecognizer.translation(in: view)
             
             //Define label (on gestureRecognizer passed in) & move label
-            let label = gestureRecognizer.view!
-            label.center = CGPoint(x: self.view.bounds.width/2 + translation.x, y: self.view.bounds.height/2 + translation.y)
+            let mateImage = gestureRecognizer.view!
+            mateImage.center = CGPoint(x: self.view.bounds.width/2 + translation.x, y: self.view.bounds.height/2 + translation.y)
             
             //Add label transformation as user drags (radians, 2pi per 360)
             
             let xFromCenter = translation.x
-            let scale = min(100/abs(xFromCenter), 1)
+            let scale = min(25/abs(xFromCenter), 1)
             
             var rotation = CGAffineTransform(rotationAngle: xFromCenter/100)
             var stretchAndRotation = rotation.scaledBy(x: scale, y: scale)
             
-            label.transform = stretchAndRotation
+            mateImage.transform = stretchAndRotation
             
             //Do diff actions if label moved left vs right
             if gestureRecognizer.state == UIGestureRecognizerState.ended {
@@ -66,15 +71,19 @@ class ChooseMatchViewController: UIViewController {
                 }
                 
                 //Reset size, rotation and location of label at swipe end
-                label.center = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/2)
+                mateImage.center = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/2)
                 rotation = CGAffineTransform(rotationAngle: 0)
                 stretchAndRotation = rotation.scaledBy(x: 1, y: 1)
-                label.transform = stretchAndRotation
+                mateImage.transform = stretchAndRotation
             }
             
             
             
+            
+            
         }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
