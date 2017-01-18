@@ -75,7 +75,6 @@ class ChooseMatchViewController: UIViewController {
             
             
         }
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

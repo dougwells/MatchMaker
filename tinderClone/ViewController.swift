@@ -80,7 +80,7 @@ class ViewController: UIViewController {
                         }
                     }
                 }
-            } else {    //Login mode
+            } else {    // Signin mode
                 PFUser.logInWithUsername(inBackground: emailTextField.text!, password: passwordTextField.text!, block: { (user, error) in
                     self.stopSpinner()
 
@@ -92,7 +92,7 @@ class ViewController: UIViewController {
                         }
                         self.createAlert(title: "Login Error", message: displayErrorMessage)
                         
-                    } else if (user != nil) {
+                    } else {
                         
                         self.performSegue(withIdentifier: "showProfile", sender: self)
                         
