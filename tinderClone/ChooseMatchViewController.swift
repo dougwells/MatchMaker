@@ -13,6 +13,8 @@ class ChooseMatchViewController: UIViewController {
     
     @IBOutlet weak var mateImage: UIImageView!
     
+    var imageArr = [PFFile]()
+    
     @IBAction func matchToLogin(_ sender: Any) {
         
         PFUser.logOutInBackground { (error) in
@@ -34,6 +36,8 @@ class ChooseMatchViewController: UIViewController {
             //Make label interactive (by default a label is not)
             mateImage.isUserInteractionEnabled = true
             mateImage.addGestureRecognizer(gesture)
+        
+            getMateImages()
             
         }
         
@@ -77,11 +81,34 @@ class ChooseMatchViewController: UIViewController {
                 mateImage.transform = stretchAndRotation
             }
             
+        } //end func wasDragged
+    
+    func getMateImages(){
+        let query = PFUser.query()  //get all data rows
+        
+        query?.findObjectsInBackground(block: { (objects, error) in
+            print("findObjectsInBackround returned")
             
-            
-            
-            
-        }
+            if error != nil {
+                
+                print("Error getting users", error)
+                
+            } else if let users = objects {
+                
+                //imageArr starts empty
+                    self.imageArr.removeAll()
+                    print("Arrays start empty")
+                
+                for object in users {
+                    if let user = object as? PFObject {
+                        self.imageArr.append((user["userImage"] as? PFFile)!)
+                    }
+                }
+                
+            }
+            print("image array complete", self.imageArr)
+        })
+    }
     
     
 
