@@ -79,23 +79,12 @@ class ChooseMatchViewController: UIViewController {
                 if translation.x < -15 {
                     
                     print ("Not chosen")
+                    moveToNextImage()
+                    
                     
                 } else if translation.x > 15 {
                     print ("Chosen")
-                    if self.counter > self.imageArr.count - 1 {
-                        self.counter = 0
-                        
-                    }else {
-                        // Configure the cell...
-                        imageArr[counter].getDataInBackground { (data, error) in
-                            
-                            if let imageData = data {
-                                if let downloadedImage = UIImage(data: imageData) {
-                                    self.mateImage.image = downloadedImage
-                                }
-                            }
-                        }
-                    }
+
                     
                 }
                 
@@ -110,6 +99,10 @@ class ChooseMatchViewController: UIViewController {
     
     func getMateImages(){
         let query = PFUser.query()  //get all data rows in User
+        
+        query?.whereKey("interestMale", equalTo: PFUser.current()?["genderMale"]!)
+        query?.whereKey("genderMale", equalTo: PFUser.current()?["interestMale"]!)
+        
         
         query?.findObjectsInBackground(block: { (objects, error) in
             print("findObjectsInBackround returned", objects?.count)
@@ -140,6 +133,24 @@ class ChooseMatchViewController: UIViewController {
             }
             print("image array complete", self.imageArr)
         })
+    }
+    
+    func moveToNextImage(){
+        if self.counter > self.imageArr.count - 1 {
+            self.counter = 0
+        }
+        
+            // if rejected, go to next image in array...
+            self.imageArr[self.counter].getDataInBackground { (data, error) in
+                
+                if let imageData = data {
+                    if let downloadedImage = UIImage(data: imageData) {
+                        self.mateImage.image = downloadedImage
+                        self.counter = self.counter + 1
+                        
+                    }
+                }
+            }
     }
     
     

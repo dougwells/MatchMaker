@@ -132,24 +132,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ju-XO-znq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Find Your Match" id="11G-lY-uQC"/>
+                                </items>
+                            </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xvy-5l-Gku">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Update Profile" id="H6q-4G-GX8">
-                                        <connections>
-                                            <action selector="goToUpdateProfile:" destination="R3M-mF-PJc" id="dIK-lu-4RI"/>
-                                            <segue destination="44g-ym-M5T" kind="show" identifier="matchToUpdate" id="Dpg-Um-JcM"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="95" style="plain" systemItem="fixedSpace" id="Jeu-Ye-DY7"/>
                                     <barButtonItem title="Logout" id="KCV-kP-S6Z">
                                         <connections>
                                             <action selector="matchToLogin:" destination="R3M-mF-PJc" id="Dje-X7-xHJ"/>
                                             <segue destination="BYZ-38-t0r" kind="show" identifier="matchToLogin" id="BdW-lZ-NNp"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="uiG-dA-UlZ"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kMm-vI-CQb"/>
+                                    <barButtonItem title="Update Profile" id="H6q-4G-GX8">
+                                        <connections>
+                                            <action selector="goToUpdateProfile:" destination="R3M-mF-PJc" id="dIK-lu-4RI"/>
+                                            <segue destination="44g-ym-M5T" kind="show" identifier="matchToUpdate" id="Dpg-Um-JcM"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
