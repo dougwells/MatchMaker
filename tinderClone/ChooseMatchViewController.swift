@@ -13,7 +13,10 @@ class ChooseMatchViewController: UIViewController {
     
     @IBOutlet weak var mateImage: UIImageView!
     
+    @IBOutlet weak var rejectAcceptLabel: UILabel!
+    
     var imageArr = [PFFile]()
+    var counter = 0
     
     @IBAction func matchToLogin(_ sender: Any) {
         
@@ -72,6 +75,21 @@ class ChooseMatchViewController: UIViewController {
                     
                 } else if translation.x > 15 {
                     print ("Chosen")
+                    if self.counter > self.imageArr.count - 1 {
+                        self.counter = 0
+                        
+                    }else {
+                        // Configure the cell...
+                        imageArr[counter].getDataInBackground { (data, error) in
+                            
+                            if let imageData = data {
+                                if let downloadedImage = UIImage(data: imageData) {
+                                    self.mateImage.image = downloadedImage
+                                }
+                            }
+                        }
+                    }
+                    
                 }
                 
                 //Reset size, rotation and location of label at swipe end
@@ -87,7 +105,7 @@ class ChooseMatchViewController: UIViewController {
         let query = PFUser.query()  //get all data rows in User
         
         query?.findObjectsInBackground(block: { (objects, error) in
-            print("findObjectsInBackround returned")
+            print("findObjectsInBackround returned", objects?.count)
             
             //imageArr starts empty
                 self.imageArr.removeAll()
@@ -102,9 +120,10 @@ class ChooseMatchViewController: UIViewController {
                 for object in users {
                     
                     if let user = object as? PFObject {
+                        print("username:", user["username"])
                         
                         if user["userImage"] != nil {
-                            print("imagefile", user["userImage"])
+                            print("imagefile not nil", user["username"])
                             self.imageArr.append(user["userImage"] as! PFFile)
                         }
                         
