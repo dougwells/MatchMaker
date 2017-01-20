@@ -84,24 +84,30 @@ class ChooseMatchViewController: UIViewController {
         } //end func wasDragged
     
     func getMateImages(){
-        let query = PFUser.query()  //get all data rows
+        let query = PFUser.query()  //get all data rows in User
         
         query?.findObjectsInBackground(block: { (objects, error) in
             print("findObjectsInBackround returned")
+            
+            //imageArr starts empty
+                self.imageArr.removeAll()
+                print("Arrays start empty")
             
             if error != nil {
                 
                 print("Error getting users", error)
                 
             } else if let users = objects {
-                
-                //imageArr starts empty
-                    self.imageArr.removeAll()
-                    print("Arrays start empty")
-                
+
                 for object in users {
+                    
                     if let user = object as? PFObject {
-                        self.imageArr.append((user["userImage"] as? PFFile)!)
+                        
+                        if user["userImage"] != nil {
+                            print("imagefile", user["userImage"])
+                            self.imageArr.append(user["userImage"] as! PFFile)
+                        }
+                        
                     }
                 }
                 
