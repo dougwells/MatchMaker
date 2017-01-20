@@ -93,6 +93,7 @@
                         <outlet property="signupOrLoginButton" destination="3zU-bP-NQT" id="oWe-et-DaR"/>
                         <segue destination="44g-ym-M5T" kind="show" identifier="showProfile" id="2J8-ro-0yG"/>
                         <segue destination="R3M-mF-PJc" kind="show" identifier="showMatchesFromLogin" id="1j4-e0-Ez6"/>
+                        <segue destination="R3M-mF-PJc" kind="show" id="YWu-jr-bln"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -115,27 +116,8 @@
                                 <rect key="frame" x="48" y="91" width="279" height="309"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xvy-5l-Gku">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem title="Logout" id="KCV-kP-S6Z">
-                                        <connections>
-                                            <action selector="matchToLogin:" destination="R3M-mF-PJc" id="Dje-X7-xHJ"/>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="matchToLogin" id="BdW-lZ-NNp"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqg-XV-W4X">
-                                <rect key="frame" x="110" y="532" width="106" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OfC-y4-xPq">
-                                <rect key="frame" x="80" y="458" width="231" height="47"/>
+                                <rect key="frame" x="72" y="524" width="231" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <string key="text"> ---&gt; Swipe RIGHT to accept
 &lt;---  Swipe LEFT to reject </string>
@@ -143,6 +125,33 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yqg-XV-W4X">
+                                <rect key="frame" x="122" y="572" width="106" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xvy-5l-Gku">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Update Profile" id="H6q-4G-GX8">
+                                        <connections>
+                                            <action selector="goToUpdateProfile:" destination="R3M-mF-PJc" id="dIK-lu-4RI"/>
+                                            <segue destination="44g-ym-M5T" kind="show" identifier="matchToUpdate" id="Dpg-Um-JcM"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="95" style="plain" systemItem="fixedSpace" id="Jeu-Ye-DY7"/>
+                                    <barButtonItem title="Logout" id="KCV-kP-S6Z">
+                                        <connections>
+                                            <action selector="matchToLogin:" destination="R3M-mF-PJc" id="Dje-X7-xHJ"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="matchToLogin" id="BdW-lZ-NNp"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="uiG-dA-UlZ"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -291,7 +300,8 @@
         <image name="thelma.jpeg" width="163" height="309"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Dpg-Um-JcM"/>
+        <segue reference="1j4-e0-Ez6"/>
         <segue reference="BdW-lZ-NNp"/>
-        <segue reference="swZ-eK-NgL"/>
     </inferredMetricsTieBreakers>
 </document>

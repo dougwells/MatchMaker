@@ -18,6 +18,13 @@ class ChooseMatchViewController: UIViewController {
     var imageArr = [PFFile]()
     var counter = 0
     
+    @IBAction func goToUpdateProfile(_ sender: UIBarButtonItem) {
+        
+                        self.performSegue(withIdentifier: "matchToUpdate", sender: self)
+        
+    }
+    
+    
     @IBAction func matchToLogin(_ sender: Any) {
         
         PFUser.logOutInBackground { (error) in

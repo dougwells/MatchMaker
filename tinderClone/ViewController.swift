@@ -94,7 +94,15 @@ class ViewController: UIViewController {
                         
                     } else {
                         
-                        self.performSegue(withIdentifier: "showProfile", sender: self)
+                        if user?["genderMale"] != nil
+                            && user?["interestMale"] != nil
+                            && user?["userImage"] != nil {
+                            
+                                self.performSegue(withIdentifier: "showMatchesFromLogin", sender: self)
+                        } else {
+                        
+                            self.performSegue(withIdentifier: "showProfile", sender: self)
+                        }
                         
                     }
                 })
