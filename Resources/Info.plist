@@ -24,6 +24,8 @@
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>Main</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>So we can match you with local dates</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -59,6 +61,8 @@
 				<true/>
 			</dict>
 		</dict>
+		<key></key>
+		<false/>
 	</dict>
 </dict>
 </plist>

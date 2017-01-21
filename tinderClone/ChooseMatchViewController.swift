@@ -39,7 +39,17 @@ class ChooseMatchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-            
+        
+        //find user location (need to add "Privacy - Location when in use in plist for PFGeopoint to work
+        
+        PFGeoPoint.geoPointForCurrentLocation { (geopoint, error) in
+            print(geopoint)
+            if let geopoint = geopoint {
+                PFUser.current()?["location"] = geopoint
+                PFUser.current()?.saveInBackground()
+            }
+        }
+        
             //Recognizer user gesture "pan"/swipe & run fn "wasDragged"
             let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.wasDragged(gestureRecognizer:)))
             
@@ -48,6 +58,8 @@ class ChooseMatchViewController: UIViewController {
             mateImage.addGestureRecognizer(gesture)
         
             getMateImages()
+        
+        
             
         }
         
