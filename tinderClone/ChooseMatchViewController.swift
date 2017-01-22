@@ -15,7 +15,11 @@ class ChooseMatchViewController: UIViewController {
     
     @IBOutlet weak var rejectAcceptLabel: UILabel!
     
+    var currentMateId = ""
     var imageArr = [PFFile]()
+    var userIdArr = [String]()
+    var acceptedArr = [String]()
+    var rejectedArr = [String]()
     var counter = 0
     
     @IBAction func goToUpdateProfile(_ sender: UIBarButtonItem) {
@@ -90,12 +94,15 @@ class ChooseMatchViewController: UIViewController {
                 //15 pixels before actions kick in
                 if translation.x < -15 {
                     
-                    print ("Not chosen")
+                    print ("Not chosen", currentMateId)
+                    rejectedArr.append(currentMateId)
                     moveToNextImage()
                     
                     
                 } else if translation.x > 15 {
-                    print ("Chosen")
+                    acceptedArr.append(currentMateId)
+                    print ("Chosen", currentMateId)
+                    moveToNextImage()
 
                     
                 }
@@ -121,6 +128,8 @@ class ChooseMatchViewController: UIViewController {
             
             //imageArr starts empty
                 self.imageArr.removeAll()
+                self.acceptedArr.removeAll()
+                self.rejectedArr.removeAll()
                 print("Arrays start empty")
             
             if error != nil {
@@ -137,6 +146,7 @@ class ChooseMatchViewController: UIViewController {
                         if user["userImage"] != nil {
                             print("imagefile not nil", user["username"])
                             self.imageArr.append(user["userImage"] as! PFFile)
+                            self.userIdArr.append(user.objectId!)
                         }
                         
                     }
@@ -153,6 +163,8 @@ class ChooseMatchViewController: UIViewController {
         }
         
             // if rejected, go to next image in array...
+        
+            self.currentMateId = userIdArr[self.counter]
             self.imageArr[self.counter].getDataInBackground { (data, error) in
                 
                 if let imageData = data {
