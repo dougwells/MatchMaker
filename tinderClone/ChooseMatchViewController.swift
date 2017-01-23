@@ -84,6 +84,10 @@ class ChooseMatchViewController: UIViewController {
                 //15 pixels before actions kick in
                 if translation.x < -15 {
                     
+                    if acceptedArr.contains(currentMateId) {
+                        acceptedArr = acceptedArr.filter{$0 != currentMateId}
+                    }
+                    
                     if !rejectedArr.contains(currentMateId) && currentMateId != "" {
                         rejectedArr.append(currentMateId)
                         print("rejected", currentMateId)
@@ -98,6 +102,10 @@ class ChooseMatchViewController: UIViewController {
                     
                     
                 } else if translation.x > 15 {
+                    
+                    if rejectedArr.contains(currentMateId) {
+                        rejectedArr = rejectedArr.filter{$0 != currentMateId}
+                    }
                     
                     if !acceptedArr.contains(currentMateId) && currentMateId != "" {
                         acceptedArr.append(currentMateId)
@@ -126,6 +134,10 @@ class ChooseMatchViewController: UIViewController {
         
         query?.whereKey("interestMale", equalTo: PFUser.current()?["genderMale"]!)
         query?.whereKey("genderMale", equalTo: PFUser.current()?["interestMale"]!)
+        query?.whereKey("objectId", notContainedIn: PFUser.current()?["rejectedArr"]! as! [Any])
+        
+        query?.whereKey("location", nearGeoPoint: PFUser.current()?["location"]! as! PFGeoPoint, withinMiles: 100)
+        
         
         
         query?.findObjectsInBackground(block: { (objects, error) in
@@ -133,9 +145,10 @@ class ChooseMatchViewController: UIViewController {
             
             //imageArr starts empty
                 self.imageArr.removeAll()
-                self.acceptedArr.removeAll()
-                self.rejectedArr.removeAll()
-                print("Arrays start empty")
+            
+            //set rejected and accepted array to user history
+                self.acceptedArr = PFUser.current()?["acceptedArr"] as! [String]
+                self.rejectedArr = PFUser.current()?["rejectedArr"] as! [String]
             
             if error != nil {
                 
