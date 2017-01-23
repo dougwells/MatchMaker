@@ -24,7 +24,7 @@ class ChooseMatchViewController: UIViewController {
     
     @IBAction func goToUpdateProfile(_ sender: UIBarButtonItem) {
         
-                        self.performSegue(withIdentifier: "matchToUpdate", sender: self)
+        self.performSegue(withIdentifier: "matchToUpdate", sender: self)
         
     }
     
@@ -44,28 +44,18 @@ class ChooseMatchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //find user location (need to add "Privacy - Location when in use in plist for PFGeopoint to work
+        saveCurrUserLocation()
+        getMateImages()
+
         
-        PFGeoPoint.geoPointForCurrentLocation { (geopoint, error) in
-            print(geopoint)
-            if let geopoint = geopoint {
-                PFUser.current()?["location"] = geopoint
-                PFUser.current()?.saveInBackground()
-            }
-        }
-        
-            //Recognizer user gesture "pan"/swipe & run fn "wasDragged"
+            //Recognize user gesture "pan"/swipe & run fn "wasDragged"
             let gesture = UIPanGestureRecognizer(target: self, action: #selector(self.wasDragged(gestureRecognizer:)))
             
-            //Make label interactive (by default a label is not)
+            //Make image interactive (by default an image is not)
             mateImage.isUserInteractionEnabled = true
             mateImage.addGestureRecognizer(gesture)
         
-            getMateImages()
-        
-        
-            
-        }
+        } //end viewDidLoad
         
         func wasDragged(gestureRecognizer: UIPanGestureRecognizer) {
             
@@ -94,17 +84,32 @@ class ChooseMatchViewController: UIViewController {
                 //15 pixels before actions kick in
                 if translation.x < -15 {
                     
-                    print ("Not chosen", currentMateId)
-                    rejectedArr.append(currentMateId)
+                    if !rejectedArr.contains(currentMateId) && currentMateId != "" {
+                        rejectedArr.append(currentMateId)
+                        print("rejected", currentMateId)
+                    } else {
+                        print ("Previously rejected", currentMateId)
+                    }
+                    
                     moveToNextImage()
+                    PFUser.current()?["rejectedArr"] = rejectedArr
+                    PFUser.current()?.saveInBackground()
+                    
                     
                     
                 } else if translation.x > 15 {
-                    acceptedArr.append(currentMateId)
-                    print ("Chosen", currentMateId)
-                    moveToNextImage()
-
                     
+                    if !acceptedArr.contains(currentMateId) && currentMateId != "" {
+                        acceptedArr.append(currentMateId)
+                        print("Accepted", currentMateId)
+                    } else {
+                        print ("Previously chosen", currentMateId)
+                    }
+
+                    moveToNextImage()
+                    PFUser.current()?["acceptedArr"] = acceptedArr
+                    PFUser.current()?.saveInBackground()
+
                 }
                 
                 //Reset size, rotation and location of label at swipe end
@@ -124,7 +129,7 @@ class ChooseMatchViewController: UIViewController {
         
         
         query?.findObjectsInBackground(block: { (objects, error) in
-            print("findObjectsInBackround returned", objects?.count)
+            print("findObjectsInBackround returned")
             
             //imageArr starts empty
                 self.imageArr.removeAll()
@@ -141,21 +146,18 @@ class ChooseMatchViewController: UIViewController {
                 for object in users {
                     
                     if let user = object as? PFObject {
-                        print("username:", user["username"])
                         
                         if user["userImage"] != nil {
-                            print("imagefile not nil", user["username"])
                             self.imageArr.append(user["userImage"] as! PFFile)
                             self.userIdArr.append(user.objectId!)
                         }
                         
                     }
                 }
-                
             }
-            print("image array complete", self.imageArr)
+            print("--- image array complete ---")
         })
-    }
+    } //end function getMateImages
     
     func moveToNextImage(){
         if self.counter > self.imageArr.count - 1 {
@@ -175,6 +177,17 @@ class ChooseMatchViewController: UIViewController {
                     }
                 }
             }
+    }
+    
+    func saveCurrUserLocation() {
+        //find user location (need to add "Privacy - Location when in use in plist for PFGeopoint to work
+        
+        PFGeoPoint.geoPointForCurrentLocation { (geopoint, error) in
+            print(geopoint)
+            if let geopoint = geopoint {
+                
+            }
+        }
     }
     
     
