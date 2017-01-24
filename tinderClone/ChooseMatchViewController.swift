@@ -46,6 +46,8 @@ class ChooseMatchViewController: UIViewController {
         
         saveCurrUserLocation()
         getMateImages()
+        moveToNextImage()
+        
 
         
             //Recognize user gesture "pan"/swipe & run fn "wasDragged"
@@ -136,7 +138,7 @@ class ChooseMatchViewController: UIViewController {
         query?.whereKey("genderMale", equalTo: PFUser.current()?["interestMale"]!)
         query?.whereKey("objectId", notContainedIn: PFUser.current()?["rejectedArr"]! as! [Any])
         
-        query?.whereKey("location", nearGeoPoint: PFUser.current()?["location"]! as! PFGeoPoint, withinMiles: 100)
+        query?.whereKey("location", nearGeoPoint: PFUser.current()?["location"]! as! PFGeoPoint, withinMiles: 1000000)
         
         
         
@@ -174,10 +176,12 @@ class ChooseMatchViewController: UIViewController {
     
     func moveToNextImage(){
         if self.counter > self.imageArr.count - 1 {
-            self.counter = 0
+            //self.counter = 0
+            self.mateImage.image = #imageLiteral(resourceName: "Done.jpg")
+            return
         }
         
-            // if rejected, go to next image in array...
+            // move to next image in array...
         
             self.currentMateId = userIdArr[self.counter]
             self.imageArr[self.counter].getDataInBackground { (data, error) in
