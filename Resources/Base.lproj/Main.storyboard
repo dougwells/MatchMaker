@@ -112,7 +112,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="thelma.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="L7Q-lv-P9j">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="loveLoading.png" translatesAutoresizingMaskIntoConstraints="NO" id="L7Q-lv-P9j">
                                 <rect key="frame" x="0.0" y="55" width="375" height="438"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -127,12 +127,14 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="kMm-vI-CQb"/>
-                                    <barButtonItem title="Update Profile" id="H6q-4G-GX8">
+                                    <barButtonItem title="Profile" id="H6q-4G-GX8">
                                         <connections>
                                             <action selector="goToUpdateProfile:" destination="R3M-mF-PJc" id="dIK-lu-4RI"/>
                                             <segue destination="44g-ym-M5T" kind="show" identifier="matchToUpdate" id="Dpg-Um-JcM"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="1dY-ar-Q7H"/>
+                                    <barButtonItem title="Reset" id="8g9-lb-Zcu"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="teN-V1-viL"/>
                                     <barButtonItem title="Matches" width="66" id="kP7-Bn-QZK">
                                         <connections>
@@ -359,7 +361,7 @@
     <resources>
         <image name="Dating2.jpg" width="352" height="352"/>
         <image name="cruiseCartoon.jpg" width="564" height="564"/>
-        <image name="thelma.jpeg" width="163" height="309"/>
+        <image name="loveLoading.png" width="178" height="178"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="obJ-07-iy4"/>
