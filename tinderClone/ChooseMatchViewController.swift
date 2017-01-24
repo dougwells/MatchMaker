@@ -46,7 +46,6 @@ class ChooseMatchViewController: UIViewController {
         
         saveCurrUserLocation()
         getMateImages()
-        moveToNextImage()
         
 
         
@@ -143,7 +142,7 @@ class ChooseMatchViewController: UIViewController {
         
         
         query?.findObjectsInBackground(block: { (objects, error) in
-            print("findObjectsInBackround returned")
+            print("getMateImages returned. findObjectsInBackround returned")
             
             //imageArr starts empty
                 self.imageArr.removeAll()
@@ -171,12 +170,14 @@ class ChooseMatchViewController: UIViewController {
                 }
             }
             print("--- image array complete ---")
+            self.moveToNextImage()
         })
     } //end function getMateImages
     
     func moveToNextImage(){
         if self.counter > self.imageArr.count - 1 {
             //self.counter = 0
+            print("Last image.  Loading Done")
             self.mateImage.image = #imageLiteral(resourceName: "Done.jpg")
             return
         }
@@ -200,7 +201,7 @@ class ChooseMatchViewController: UIViewController {
         //find user location (need to add "Privacy - Location when in use in plist for PFGeopoint to work
         
         PFGeoPoint.geoPointForCurrentLocation { (geopoint, error) in
-            print(geopoint)
+            print("saveCurrUserLocation returned", geopoint?.latitude, geopoint?.longitude)
             if let geopoint = geopoint {
                 
             }
