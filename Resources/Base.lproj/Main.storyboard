@@ -112,9 +112,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="loading2.gif" translatesAutoresizingMaskIntoConstraints="NO" id="L7Q-lv-P9j">
-                                <rect key="frame" x="0.0" y="55" width="375" height="438"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="Downloading.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="L7Q-lv-P9j">
+                                <rect key="frame" x="0.0" y="74" width="375" height="378"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="375" id="UQr-m2-8hs"/>
+                                    <constraint firstAttribute="width" constant="375" id="cZT-92-JQc"/>
+                                </constraints>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xvy-5l-Gku">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
@@ -154,9 +157,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ju-XO-znq">
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ju-XO-znq">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Choose Your Match" id="11G-lY-uQC"/>
                                 </items>
@@ -175,6 +177,11 @@
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="L7Q-lv-P9j" secondAttribute="trailing" id="AkC-Z4-ErH"/>
+                            <constraint firstItem="L7Q-lv-P9j" firstAttribute="leading" secondItem="jTn-KV-hXa" secondAttribute="leading" id="pl2-hg-DsF"/>
+                            <constraint firstItem="L7Q-lv-P9j" firstAttribute="top" secondItem="7ju-XO-znq" secondAttribute="bottom" constant="30" id="tkr-6L-xyP"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="mateImage" destination="L7Q-lv-P9j" id="qZI-uj-9sL"/>
@@ -183,7 +190,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSf-y1-MB5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="258" y="-196"/>
+            <point key="canvasLocation" x="256.80000000000001" y="-196.55172413793105"/>
         </scene>
         <!--Matches View Controller-->
         <scene sceneID="OU2-gN-axp">
@@ -208,18 +215,51 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IIk-hc-EZU">
-                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="113" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IIk-hc-EZU">
+                                <rect key="frame" x="0.0" y="72" width="375" height="551"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="O1a-2O-ahH">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="113" id="O1a-2O-ahH" customClass="MatchesTableViewCell" customModule="tinderClone" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O1a-2O-ahH" id="fKF-T9-r8B">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pcj-hC-CLe">
+                                                    <rect key="frame" x="8" y="8" width="131" height="87"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgz-nF-tia">
+                                                    <rect key="frame" x="147" y="8" width="220" height="37"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write a message ..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r1A-XN-MDn">
+                                                    <rect key="frame" x="147" y="53" width="220" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqD-dT-Vhx">
+                                                    <rect key="frame" x="313" y="82" width="36" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Send"/>
+                                                    <connections>
+                                                        <action selector="send:" destination="O1a-2O-ahH" eventType="touchUpInside" id="aBw-Fy-7LY"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="messagesLabel" destination="sgz-nF-tia" id="KZm-1a-ciq"/>
+                                            <outlet property="messagesTextField" destination="r1A-XN-MDn" id="vTB-74-9Hg"/>
+                                            <outlet property="userImageView" destination="pcj-hC-CLe" id="mSA-AG-oId"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -227,6 +267,13 @@
                                     <outlet property="delegate" destination="vmX-Gg-XzO" id="5aT-Cg-1Sg"/>
                                 </connections>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dGJ-fk-un8">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Your Matches" id="Rgj-cs-6wj"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -367,8 +414,8 @@
     </scenes>
     <resources>
         <image name="Dating2.jpg" width="352" height="352"/>
+        <image name="Downloading.jpg" width="800" height="600"/>
         <image name="cruiseCartoon.jpg" width="564" height="564"/>
-        <image name="loading2.gif" width="300" height="300"/>
         <image name="swipeLeftRight.png" width="200" height="200"/>
         <image name="thumbsDown.png" width="225" height="224"/>
         <image name="thumbsUp.png" width="225" height="224"/>

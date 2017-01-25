@@ -13,6 +13,9 @@
 		703469AA1E391856006B855E /* swipeLeftRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 703469A91E391856006B855E /* swipeLeftRight.png */; };
 		703469AC1E391865006B855E /* thumbsUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 703469AB1E391865006B855E /* thumbsUp.png */; };
 		703469AE1E391870006B855E /* thumbsDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 703469AD1E391870006B855E /* thumbsDown.png */; };
+		703469B01E3922C0006B855E /* complete.png in Resources */ = {isa = PBXBuildFile; fileRef = 703469AF1E3922C0006B855E /* complete.png */; };
+		703469B21E3923E3006B855E /* Downloading.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 703469B11E3923E3006B855E /* Downloading.jpg */; };
+		703469B41E39377C006B855E /* MatchesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703469B31E39377C006B855E /* MatchesTableViewCell.swift */; };
 		70A7C1051E2D15090068B536 /* Dating2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70A7C1041E2D15090068B536 /* Dating2.jpg */; };
 		70A7C10B1E2D2C7A0068B536 /* cruiseCartoon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70A7C10A1E2D2C7A0068B536 /* cruiseCartoon.jpg */; };
 		70A7C10F1E2D2E550068B536 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A7C10E1E2D2E550068B536 /* ProfileViewController.swift */; };
@@ -44,6 +47,9 @@
 		703469A91E391856006B855E /* swipeLeftRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swipeLeftRight.png; sourceTree = "<group>"; };
 		703469AB1E391865006B855E /* thumbsUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbsUp.png; sourceTree = "<group>"; };
 		703469AD1E391870006B855E /* thumbsDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbsDown.png; sourceTree = "<group>"; };
+		703469AF1E3922C0006B855E /* complete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = complete.png; sourceTree = "<group>"; };
+		703469B11E3923E3006B855E /* Downloading.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Downloading.jpg; sourceTree = "<group>"; };
+		703469B31E39377C006B855E /* MatchesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesTableViewCell.swift; sourceTree = "<group>"; };
 		70A7C1041E2D15090068B536 /* Dating2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Dating2.jpg; sourceTree = "<group>"; };
 		70A7C10A1E2D2C7A0068B536 /* cruiseCartoon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cruiseCartoon.jpg; sourceTree = "<group>"; };
 		70A7C10E1E2D2E550068B536 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -102,9 +108,11 @@
 				70A7C10A1E2D2C7A0068B536 /* cruiseCartoon.jpg */,
 				70A7C1101E2D6CC60068B536 /* megCartoon.jpg */,
 				70A7C11E1E37A3A80068B536 /* loveLoading.png */,
+				703469B11E3923E3006B855E /* Downloading.jpg */,
 				70A7C1201E37A3B60068B536 /* loading.png */,
 				703469A71E391802006B855E /* loading2.gif */,
 				703469A51E3917BF006B855E /* loading3.png */,
+				703469AF1E3922C0006B855E /* complete.png */,
 				70A7C11C1E36D0500068B536 /* Done.jpg */,
 				703469A31E3917A6006B855E /* done2.png */,
 				703469A91E391856006B855E /* swipeLeftRight.png */,
@@ -137,6 +145,7 @@
 			children = (
 				70DAB57D1E2ADE790006108E /* tinderClone.entitlements */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
+				703469B31E39377C006B855E /* MatchesTableViewCell.swift */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				70A7C1121E2FBD360068B536 /* ChooseMatchViewController.swift */,
@@ -238,6 +247,7 @@
 				70A7C1171E30257D0068B536 /* jessica2.jpeg in Resources */,
 				70A7C11D1E36D0500068B536 /* Done.jpg in Resources */,
 				70A7C1191E3025CD0068B536 /* thelma.jpeg in Resources */,
+				703469B01E3922C0006B855E /* complete.png in Resources */,
 				703469A61E3917BF006B855E /* loading3.png in Resources */,
 				703469A41E3917A6006B855E /* done2.png in Resources */,
 				703469A81E391802006B855E /* loading2.gif in Resources */,
@@ -247,6 +257,7 @@
 				70A7C10B1E2D2C7A0068B536 /* cruiseCartoon.jpg in Resources */,
 				70A7C1151E3024E90068B536 /* jessicaRabbit.jpg in Resources */,
 				70A7C11F1E37A3A80068B536 /* loveLoading.png in Resources */,
+				703469B21E3923E3006B855E /* Downloading.jpg in Resources */,
 				814C3ACA1B69877600E307BB /* Main.storyboard in Resources */,
 				70A7C1211E37A3B60068B536 /* loading.png in Resources */,
 				814C3ACB1B69877600E307BB /* Images.xcassets in Resources */,
@@ -262,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70A7C10F1E2D2E550068B536 /* ProfileViewController.swift in Sources */,
+				703469B41E39377C006B855E /* MatchesTableViewCell.swift in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				70A7C11B1E36C61B0068B536 /* MatchesViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,

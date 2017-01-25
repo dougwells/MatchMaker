@@ -22,10 +22,9 @@ class ChooseMatchViewController: UIViewController {
     var rejectedArr = [String]()
     var counter = 0
     
+    
     @IBAction func goToUpdateProfile(_ sender: UIBarButtonItem) {
-        
         self.performSegue(withIdentifier: "matchToUpdate", sender: self)
-        
     }
     
     
@@ -60,6 +59,8 @@ class ChooseMatchViewController: UIViewController {
         super.viewDidLoad()
         
         saveCurrUserLocation()
+        print("imageArr.count = ", imageArr.count)
+        print("counter = ", counter)
         getMateImages()
         
 
@@ -87,7 +88,7 @@ class ChooseMatchViewController: UIViewController {
         
         
         query?.findObjectsInBackground(block: { (objects, error) in
-            print("getMateImages returned. findObjectsInBackround returned")
+            print("getMateImages returned. findObjectsInBackground returned")
             
             //imageArr starts empty
                 self.imageArr.removeAll()
@@ -122,9 +123,8 @@ class ChooseMatchViewController: UIViewController {
     
     func moveToNextImage(){
         if self.counter > self.imageArr.count - 1 {
-            //self.counter = 0
             print("Last image.  Loading Done")
-            self.mateImage.image = #imageLiteral(resourceName: "done2.png")
+            self.mateImage.image = #imageLiteral(resourceName: "complete.png")
             return
         }
         
@@ -147,7 +147,7 @@ class ChooseMatchViewController: UIViewController {
         //find user location (need to add "Privacy - Location when in use in plist for PFGeopoint to work
         
         PFGeoPoint.geoPointForCurrentLocation { (geopoint, error) in
-            print("saveCurrUserLocation returned", geopoint?.latitude, geopoint?.longitude)
+            print("saveCurrUserLocation returned")
             if let geopoint = geopoint {
                 
             }
