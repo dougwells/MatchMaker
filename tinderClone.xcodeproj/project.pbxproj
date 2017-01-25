@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		703469A41E3917A6006B855E /* done2.png in Resources */ = {isa = PBXBuildFile; fileRef = 703469A31E3917A6006B855E /* done2.png */; };
+		703469A61E3917BF006B855E /* loading3.png in Resources */ = {isa = PBXBuildFile; fileRef = 703469A51E3917BF006B855E /* loading3.png */; };
+		703469A81E391802006B855E /* loading2.gif in Resources */ = {isa = PBXBuildFile; fileRef = 703469A71E391802006B855E /* loading2.gif */; };
+		703469AA1E391856006B855E /* swipeLeftRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 703469A91E391856006B855E /* swipeLeftRight.png */; };
+		703469AC1E391865006B855E /* thumbsUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 703469AB1E391865006B855E /* thumbsUp.png */; };
+		703469AE1E391870006B855E /* thumbsDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 703469AD1E391870006B855E /* thumbsDown.png */; };
 		70A7C1051E2D15090068B536 /* Dating2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70A7C1041E2D15090068B536 /* Dating2.jpg */; };
 		70A7C10B1E2D2C7A0068B536 /* cruiseCartoon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70A7C10A1E2D2C7A0068B536 /* cruiseCartoon.jpg */; };
 		70A7C10F1E2D2E550068B536 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70A7C10E1E2D2E550068B536 /* ProfileViewController.swift */; };
@@ -32,6 +38,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		703469A31E3917A6006B855E /* done2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = done2.png; sourceTree = "<group>"; };
+		703469A51E3917BF006B855E /* loading3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading3.png; sourceTree = "<group>"; };
+		703469A71E391802006B855E /* loading2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = loading2.gif; sourceTree = "<group>"; };
+		703469A91E391856006B855E /* swipeLeftRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swipeLeftRight.png; sourceTree = "<group>"; };
+		703469AB1E391865006B855E /* thumbsUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbsUp.png; sourceTree = "<group>"; };
+		703469AD1E391870006B855E /* thumbsDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbsDown.png; sourceTree = "<group>"; };
 		70A7C1041E2D15090068B536 /* Dating2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Dating2.jpg; sourceTree = "<group>"; };
 		70A7C10A1E2D2C7A0068B536 /* cruiseCartoon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cruiseCartoon.jpg; sourceTree = "<group>"; };
 		70A7C10E1E2D2E550068B536 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -91,7 +103,13 @@
 				70A7C1101E2D6CC60068B536 /* megCartoon.jpg */,
 				70A7C11E1E37A3A80068B536 /* loveLoading.png */,
 				70A7C1201E37A3B60068B536 /* loading.png */,
+				703469A71E391802006B855E /* loading2.gif */,
+				703469A51E3917BF006B855E /* loading3.png */,
 				70A7C11C1E36D0500068B536 /* Done.jpg */,
+				703469A31E3917A6006B855E /* done2.png */,
+				703469A91E391856006B855E /* swipeLeftRight.png */,
+				703469AD1E391870006B855E /* thumbsDown.png */,
+				703469AB1E391865006B855E /* thumbsUp.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -220,6 +238,12 @@
 				70A7C1171E30257D0068B536 /* jessica2.jpeg in Resources */,
 				70A7C11D1E36D0500068B536 /* Done.jpg in Resources */,
 				70A7C1191E3025CD0068B536 /* thelma.jpeg in Resources */,
+				703469A61E3917BF006B855E /* loading3.png in Resources */,
+				703469A41E3917A6006B855E /* done2.png in Resources */,
+				703469A81E391802006B855E /* loading2.gif in Resources */,
+				703469AE1E391870006B855E /* thumbsDown.png in Resources */,
+				703469AC1E391865006B855E /* thumbsUp.png in Resources */,
+				703469AA1E391856006B855E /* swipeLeftRight.png in Resources */,
 				70A7C10B1E2D2C7A0068B536 /* cruiseCartoon.jpg in Resources */,
 				70A7C1151E3024E90068B536 /* jessicaRabbit.jpg in Resources */,
 				70A7C11F1E37A3A80068B536 /* loveLoading.png in Resources */,

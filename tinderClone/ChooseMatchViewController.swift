@@ -41,6 +41,21 @@ class ChooseMatchViewController: UIViewController {
         }
     }
 
+    @IBAction func resetMatches(_ sender: Any) {
+        PFUser.current()?["acceptedArr"] = []
+        PFUser.current()?["rejectedArr"] = []
+        PFUser.current()?.saveInBackground(block: { (success, error) in
+            if success {
+                print("--- Reset accept/reject arrays ---")
+                self.counter = 0
+                self.getMateImages()
+            } else if error != nil {
+                print("error reseting accept/reject arrays")
+            }
+        })
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,77 +73,7 @@ class ChooseMatchViewController: UIViewController {
         
         } //end viewDidLoad
         
-        func wasDragged(gestureRecognizer: UIPanGestureRecognizer) {
-            
-            //Move label center to where user drags.
-            //translation: location user drag stops relative to start
-            let translation = gestureRecognizer.translation(in: view)
-            
-            //Define label (on gestureRecognizer passed in) & move label
-            let mateImage = gestureRecognizer.view!
-            mateImage.center = CGPoint(x: self.view.bounds.width/2 + translation.x, y: self.view.bounds.height/2 + translation.y)
-            
-            //Add label transformation as user drags (radians, 2pi per 360)
-            
-            let xFromCenter = translation.x
-            let scale = min(25/abs(xFromCenter), 1)
-            
-            var rotation = CGAffineTransform(rotationAngle: xFromCenter/100)
-            var stretchAndRotation = rotation.scaledBy(x: scale, y: scale)
-            
-            mateImage.transform = stretchAndRotation
-            
-            //Do diff actions if label moved left vs right
-            if gestureRecognizer.state == UIGestureRecognizerState.ended {
-                
-                //Chosen = drag right.  Reject = drag left
-                //15 pixels before actions kick in
-                if translation.x < -15 {
-                    
-                    if acceptedArr.contains(currentMateId) {
-                        acceptedArr = acceptedArr.filter{$0 != currentMateId}
-                    }
-                    
-                    if !rejectedArr.contains(currentMateId) && currentMateId != "" {
-                        rejectedArr.append(currentMateId)
-                        print("rejected", currentMateId)
-                    } else {
-                        print ("Previously rejected", currentMateId)
-                    }
-                    
-                    moveToNextImage()
-                    PFUser.current()?["rejectedArr"] = rejectedArr
-                    PFUser.current()?.saveInBackground()
-                    
-                    
-                    
-                } else if translation.x > 15 {
-                    
-                    if rejectedArr.contains(currentMateId) {
-                        rejectedArr = rejectedArr.filter{$0 != currentMateId}
-                    }
-                    
-                    if !acceptedArr.contains(currentMateId) && currentMateId != "" {
-                        acceptedArr.append(currentMateId)
-                        print("Accepted", currentMateId)
-                    } else {
-                        print ("Previously chosen", currentMateId)
-                    }
 
-                    moveToNextImage()
-                    PFUser.current()?["acceptedArr"] = acceptedArr
-                    PFUser.current()?.saveInBackground()
-
-                }
-                
-                //Reset size, rotation and location of label at swipe end
-                mateImage.center = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/2)
-                rotation = CGAffineTransform(rotationAngle: 0)
-                stretchAndRotation = rotation.scaledBy(x: 1, y: 1)
-                mateImage.transform = stretchAndRotation
-            }
-            
-        } //end func wasDragged
     
     func getMateImages(){
         let query = PFUser.query()  //get all data rows in User
@@ -146,6 +91,7 @@ class ChooseMatchViewController: UIViewController {
             
             //imageArr starts empty
                 self.imageArr.removeAll()
+                self.userIdArr.removeAll()
             
             //set rejected and accepted array to user history
                 self.acceptedArr = PFUser.current()?["acceptedArr"] as! [String]
@@ -178,7 +124,7 @@ class ChooseMatchViewController: UIViewController {
         if self.counter > self.imageArr.count - 1 {
             //self.counter = 0
             print("Last image.  Loading Done")
-            self.mateImage.image = #imageLiteral(resourceName: "Done.jpg")
+            self.mateImage.image = #imageLiteral(resourceName: "done2.png")
             return
         }
         
@@ -207,6 +153,78 @@ class ChooseMatchViewController: UIViewController {
             }
         }
     }
+    
+    func wasDragged(gestureRecognizer: UIPanGestureRecognizer) {
+        
+        //Move label center to where user drags.
+        //translation: location user drag stops relative to start
+        let translation = gestureRecognizer.translation(in: view)
+        
+        //Define label (on gestureRecognizer passed in) & move label
+        let mateImage = gestureRecognizer.view!
+        mateImage.center = CGPoint(x: self.view.bounds.width/2 + translation.x, y: self.view.bounds.height/2 + translation.y)
+        
+        //Add label transformation as user drags (radians, 2pi per 360)
+        
+        let xFromCenter = translation.x
+        let scale = min(25/abs(xFromCenter), 1)
+        
+        var rotation = CGAffineTransform(rotationAngle: xFromCenter/100)
+        var stretchAndRotation = rotation.scaledBy(x: scale, y: scale)
+        
+        mateImage.transform = stretchAndRotation
+        
+        //Do diff actions if label moved left vs right
+        if gestureRecognizer.state == UIGestureRecognizerState.ended {
+            
+            //Chosen = drag right.  Reject = drag left
+            //15 pixels before actions kick in
+            if translation.x < -15 {
+                
+                if acceptedArr.contains(currentMateId) {
+                    acceptedArr = acceptedArr.filter{$0 != currentMateId}
+                }
+                
+                if !rejectedArr.contains(currentMateId) && currentMateId != "" {
+                    rejectedArr.append(currentMateId)
+                    print("rejected", currentMateId)
+                } else {
+                    print ("Previously rejected", currentMateId)
+                }
+                
+                moveToNextImage()
+                PFUser.current()?["rejectedArr"] = rejectedArr
+                PFUser.current()?.saveInBackground()
+                
+                
+                
+            } else if translation.x > 15 {
+                
+                if rejectedArr.contains(currentMateId) {
+                    rejectedArr = rejectedArr.filter{$0 != currentMateId}
+                }
+                
+                if !acceptedArr.contains(currentMateId) && currentMateId != "" {
+                    acceptedArr.append(currentMateId)
+                    print("Accepted", currentMateId)
+                } else {
+                    print ("Previously chosen", currentMateId)
+                }
+                
+                moveToNextImage()
+                PFUser.current()?["acceptedArr"] = acceptedArr
+                PFUser.current()?.saveInBackground()
+                
+            }
+            
+            //Reset size, rotation and location of label at swipe end
+            mateImage.center = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/2)
+            rotation = CGAffineTransform(rotationAngle: 0)
+            stretchAndRotation = rotation.scaledBy(x: 1, y: 1)
+            mateImage.transform = stretchAndRotation
+        }
+        
+    } //end func wasDragged
     
     
 
