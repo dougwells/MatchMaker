@@ -17,9 +17,11 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MatchesTableViewCell
         
-            cell.textLabel?.text = "Test"
+            cell.userImageView.image = UIImage(named: "megCartoon.jpg")
+        
+            cell.messagesLabel.text = "No messages yet"
         return cell
     }
 
