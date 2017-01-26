@@ -11,6 +11,8 @@ import Parse
 
 class MatchesTableViewCell: UITableViewCell {
     
+    
+    
     @IBOutlet weak var userImageView: UIImageView!
     
     @IBOutlet weak var messagesLabel: UILabel!
@@ -35,6 +37,34 @@ class MatchesTableViewCell: UITableViewCell {
         print("saving new message \(userIdLabel.text)")
         messageDB.saveInBackground()
         messagesTextField.text = ""
+        
+        retrieveMessages(senderId: userIdLabel.text!)
+    }
+    
+    func retrieveMessages(senderId: String) {
+        
+        let messageQuery = PFQuery(className: "Message")
+        
+        messageQuery.whereKey("sender", contains: senderId)
+    
+        messageQuery.whereKey("recipient", contains: PFUser.current()?.objectId!)
+        
+        messageQuery.limit = 1
+        
+        messageQuery.findObjectsInBackground { (objects, error) in
+            
+            if let messages = objects {
+                for object in messages {
+                    if let message = object as? PFObject {
+                        self.messagesLabel.text = message["content"] as! String?
+                        
+                        print("Retrieve message complete", message["content"])
+                        
+                    }
+                }
+            }
+        }
+        
     }
 
     override func awakeFromNib() {
