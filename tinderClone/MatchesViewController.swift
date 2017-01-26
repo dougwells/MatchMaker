@@ -12,6 +12,7 @@ import Parse
 class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var images = [UIImage]()
+    var userIdArr = [String]()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -26,11 +27,18 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell.userImageView.image = images[indexPath.row] as! UIImage
         
             cell.messagesLabel.text = "No messages yet"
+        
+        cell.userIdLabel.text = userIdArr[indexPath.row]
+        
         return cell
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //arrays start empty
+        images.removeAll()
+        userIdArr.removeAll()
         
         let query = PFUser.query()
         
@@ -51,6 +59,8 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
                                     if let downloadedImage = UIImage(data: imageData) {
                                         
                                         self.images.append(downloadedImage)
+                                        
+                            self.userIdArr.append(user.objectId!)
                                         
                                         self.tableView.reloadData()
                                         

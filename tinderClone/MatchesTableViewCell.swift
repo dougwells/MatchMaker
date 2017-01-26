@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class MatchesTableViewCell: UITableViewCell {
     
@@ -16,7 +17,24 @@ class MatchesTableViewCell: UITableViewCell {
     
     @IBOutlet weak var messagesTextField: UITextField!
     
+    @IBOutlet weak var userIdLabel: UILabel!
+    
+    
     @IBAction func send(_ sender: Any) {
+        print(messagesTextField.text)
+        print(userIdLabel.text)
+        
+        let messageDB = PFObject(className: "Message")
+        
+        messageDB["sender"] = PFUser.current()?.objectId
+        
+        messageDB["recipient"] = userIdLabel.text
+        
+        messageDB["content"] = messagesTextField.text
+        
+        print("saving new message \(userIdLabel.text)")
+        messageDB.saveInBackground()
+        messagesTextField.text = ""
     }
 
     override func awakeFromNib() {
