@@ -11,15 +11,19 @@ import Parse
 
 class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var images = [UIImage]()
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return images.count
     }
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MatchesTableViewCell
         
-            cell.userImageView.image = UIImage(named: "megCartoon.jpg")
+            cell.userImageView.image = images[indexPath.row] as! UIImage
         
             cell.messagesLabel.text = "No messages yet"
         return cell
@@ -27,6 +31,43 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let query = PFUser.query()
+        
+        query?.whereKey("acceptedArr", contains: PFUser.current()?.objectId)
+        
+        query?.whereKey("objectId", containedIn: PFUser.current()?["acceptedArr"] as! [String])
+        
+        query?.findObjectsInBackground(block: { (objects, error) in
+            
+            if let users = objects {
+                for object in users {
+                    if let user = object as? PFUser {
+                        
+                        if let imageFile = user["userImage"] as? PFFile {
+                            
+                            imageFile.getDataInBackground { (data, error) in
+                                if let imageData = data {
+                                    if let downloadedImage = UIImage(data: imageData) {
+                                        
+                                        self.images.append(downloadedImage)
+                                        
+                                        self.tableView.reloadData()
+                                        
+                                    }
+                                }
+                            }
+                            
+                        }
+                        
+
+                        
+                        
+                    }
+                }
+            }
+        
+        })
 
         // Do any additional setup after loading the view.
     }
