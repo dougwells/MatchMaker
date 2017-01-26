@@ -13,7 +13,7 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var images = [UIImage]()
     var userIdArr = [String]()
-    var messageArr = [String]()
+    var messages = [String]()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -27,9 +27,9 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
         
             cell.userImageView.image = images[indexPath.row] as! UIImage
         
-            cell.messagesLabel.text = "No messages yet"
+            cell.messagesLabel.text = messages[indexPath.row]
         
-        cell.userIdLabel.text = userIdArr[indexPath.row]
+            cell.userIdLabel.text = userIdArr[indexPath.row]
         
         return cell
     }
@@ -40,7 +40,7 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
         //arrays start empty
         images.removeAll()
         userIdArr.removeAll()
-        messageArr.removeAll()
+        messages.removeAll()
         
         findMatches()
         
@@ -72,11 +72,43 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
                                 if let imageData = data {
                                     if let downloadedImage = UIImage(data: imageData) {
                                         
-                                        self.images.append(downloadedImage)
                                         
-                                        self.userIdArr.append(user.objectId!)
+                                        let messageQuery = PFQuery(className: "Message")
                                         
-                                        self.tableView.reloadData()
+                                        messageQuery.whereKey("recipient", equalTo: PFUser.current()?.objectId)
+                                        
+                                        messageQuery.whereKey("sender", equalTo: user.objectId!)
+                                        
+                                        messageQuery.findObjectsInBackground(block: { (objects, error) in
+                                            
+                                            var messageText = "No messages yet. Please check back later"
+                                            
+                                            if let messages = objects {
+                                                
+                                                for object in messages {
+                                                    
+                                                    if let message = object as? PFObject {
+                                                        
+                                                        if let messageContent = message["content"] as? String {
+                                                                messageText = messageContent
+                                                        }
+                                                        
+                                                    }
+                                                }
+                                                
+                                            } //end get msgs (if let messages=objects)
+                                            
+                                            self.messages.append(messageText)
+                                            
+                                            self.images.append(downloadedImage)
+                                            
+                                            self.userIdArr.append(user.objectId!)
+                                            
+                                            self.tableView.reloadData()
+                                            
+                                            
+                                            
+                                        })
                                         
                                     }
                                 }

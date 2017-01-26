@@ -39,12 +39,14 @@ class MatchesTableViewCell: UITableViewCell {
         messageDB.saveInBackground()
         messagesTextField.text = ""
         
-        retrieveMessages(senderId: userIdLabel.text!)
+        //retrieveMessages(senderId: userIdLabel.text!)
         
 
     }
     
     func retrieveMessages(senderId: String) {
+        
+        var messageContent = "No new messages. Try again later"
         
         let messageQuery = PFQuery(className: "Message")
         
@@ -59,9 +61,11 @@ class MatchesTableViewCell: UITableViewCell {
             if let messages = objects {
                 for object in messages {
                     if let message = object as? PFObject {
-                        self.messagesLabel.text = message["content"] as! String?
-                        
-                        print("Retrieve message complete", message["content"])
+                        if let messageText = message["content"] as! String? {
+                            messageContent = messageText
+                        }
+                        self.messagesLabel.text = messageContent
+                        print("Retrieve message complete", messageContent)
                         
                     }
                 }
