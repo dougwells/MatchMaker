@@ -13,6 +13,7 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     var images = [UIImage]()
     var userIdArr = [String]()
+    var messageArr = [String]()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -39,14 +40,27 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
         //arrays start empty
         images.removeAll()
         userIdArr.removeAll()
+        messageArr.removeAll()
         
-        let query = PFUser.query()
+        findMatches()
         
-        query?.whereKey("acceptedArr", contains: PFUser.current()?.objectId)
         
-        query?.whereKey("objectId", containedIn: PFUser.current()?["acceptedArr"] as! [String])
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func findMatches() {
+        let imageQuery = PFUser.query()
         
-        query?.findObjectsInBackground(block: { (objects, error) in
+        imageQuery?.whereKey("acceptedArr", contains: PFUser.current()?.objectId)
+        
+        imageQuery?.whereKey("objectId", containedIn: PFUser.current()?["acceptedArr"] as! [String])
+        
+        imageQuery?.findObjectsInBackground(block: { (objects, error) in
             
             if let users = objects {
                 for object in users {
@@ -60,7 +74,7 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
                                         
                                         self.images.append(downloadedImage)
                                         
-                            self.userIdArr.append(user.objectId!)
+                                        self.userIdArr.append(user.objectId!)
                                         
                                         self.tableView.reloadData()
                                         
@@ -70,21 +84,15 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
                             
                         }
                         
-
+                        
                         
                         
                     }
                 }
             }
-        
+            
         })
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
