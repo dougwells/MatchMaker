@@ -11,6 +11,7 @@ import Parse
 
 class MatchesTableViewCell: UITableViewCell {
     
+
     
     
     @IBOutlet weak var userImageView: UIImageView!
@@ -39,6 +40,8 @@ class MatchesTableViewCell: UITableViewCell {
         messagesTextField.text = ""
         
         retrieveMessages(senderId: userIdLabel.text!)
+        
+
     }
     
     func retrieveMessages(senderId: String) {
