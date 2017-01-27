@@ -77,6 +77,12 @@ class ChooseMatchViewController: UIViewController {
 
     
     func getMateImages(){
+        if PFUser.current()?["acceptedArr"] == nil {
+            PFUser.current()?["acceptedArr"] = [String]()
+        }
+        if PFUser.current()?["rejectedArr"] == nil {
+            PFUser.current()?["rejectedArr"] = [String]()
+        }
         let query = PFUser.query()  //get all data rows in User
         
         query?.whereKey("interestMale", equalTo: PFUser.current()?["genderMale"]!)

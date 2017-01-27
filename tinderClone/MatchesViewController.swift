@@ -80,6 +80,11 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
                                         messageQuery.whereKey("sender", equalTo: user.objectId!)
                                         
                                         messageQuery.findObjectsInBackground(block: { (objects, error) in
+                                        
+                                    /*  Ensures messages array in synch w/other arrays
+                                        Also, message text is overwritten so only latest
+                                        message is show to user
+                                    */
                                             
                                             var messageText = "No messages yet. Please check back later"
                                             

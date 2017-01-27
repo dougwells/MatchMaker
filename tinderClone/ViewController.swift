@@ -80,7 +80,7 @@ class ViewController: UIViewController {
                         }
                     }
                 }
-            } else {    // Signin mode
+            } else {    // Login mode
                 PFUser.logInWithUsername(inBackground: emailTextField.text!, password: passwordTextField.text!, block: { (user, error) in
                     self.stopSpinner()
 
@@ -92,7 +92,7 @@ class ViewController: UIViewController {
                         }
                         self.createAlert(title: "Login Error", message: displayErrorMessage)
                         
-                    } else {
+                    } else if user != nil {
                         
                         if user?["genderMale"] != nil
                             && user?["interestMale"] != nil
