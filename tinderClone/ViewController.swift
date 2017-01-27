@@ -49,7 +49,7 @@ class ViewController: UIViewController {
             
         } else {
             startSpinner()
-            if signupMode {
+            if signupMode {  //signup Mode
                 // Save user in Parse
                 let user = PFUser()
                 user.username = emailTextField.text
@@ -92,13 +92,13 @@ class ViewController: UIViewController {
                         }
                         self.createAlert(title: "Login Error", message: displayErrorMessage)
                         
-                    } else if user != nil {
+                    } else {
                         
                         if user?["genderMale"] != nil
                             && user?["interestMale"] != nil
                             && user?["userImage"] != nil {
+                            self.performSegue(withIdentifier: "showMatchesFromLogin", sender: self)
                             
-                                self.performSegue(withIdentifier: "showMatchesFromLogin", sender: self)
                         } else {
                         
                             self.performSegue(withIdentifier: "showProfile", sender: self)
@@ -151,7 +151,9 @@ class ViewController: UIViewController {
         
         
         //Seed Database if needed
-            //seedDB()
+            seedDB(imageArray: maleUrlArray, nameArray: maleNameArray, genderMale: true, interestMale: false)
+        
+            seedDB(imageArray: femaleUrlArray, nameArray: femaleNameArray, genderMale: false, interestMale: true)
 
         
     }
@@ -161,14 +163,24 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func seedDB(){
+
         // Seed Database
         
-        let urlArray = ["http://www.mytinyphone.com/uploads/users/whytchocolate30/400357.jpg", "http://3.bp.blogspot.com/_do469iTlR78/SnNtkgOnDZI/AAAAAAAAABU/pLVl94AS6Ts/s400/simpsons_marge.widec.jpg", "http://worldlistz.com/wp-content/uploads/2016/03/Pocahontas.jpg", "http://www.telegraph.co.uk/content/dam/films/2016/04/12/FC_Thelma_2752282k-xlarge_trans++omrcOiT85RE0j6CJOJxR6t9PX9lkYkyuoFX1iM1UJCE.jpg", "http://www.clipartkid.com/images/811/wonder-woman-by-chazzyllama-fan-art-cartoons-comics-traditional-other-hziNSw-clipart.png", "https://s-media-cache-ak0.pinimg.com/236x/a4/ab/4f/a4ab4f4031017c75ed3d572a6d97d024.jpg", "http://dy6g3i6a1660s.cloudfront.net/dzhU0pveErDcQMZZnrea_wQABAA/lb-ad/favorite-female-cartoons.jpg", "http://images6.fanpop.com/image/polls/1288000/1288040_1381018719559_full.jpg?v=1381019042", "https://s-media-cache-ak0.pinimg.com/736x/ac/7b/56/ac7b56dc0fec98cb27befd7842876369.jpg", "https://s-media-cache-ak0.pinimg.com/564x/2b/54/70/2b54704a5228f30be69fad8185a6c43d.jpg", "http://images.fanpop.com/images/image_uploads/Reese-Witherspoon--reese-witherspoon-79941_1024_768.jpg"]
+        //let urlArray = ["http://www.mytinyphone.com/uploads/users/whytchocolate30/400357.jpg", "http://3.bp.blogspot.com/_do469iTlR78/SnNtkgOnDZI/AAAAAAAAABU/pLVl94AS6Ts/s400/simpsons_marge.widec.jpg", "http://worldlistz.com/wp-content/uploads/2016/03/Pocahontas.jpg", "http://www.telegraph.co.uk/content/dam/films/2016/04/12/FC_Thelma_2752282k-xlarge_trans++omrcOiT85RE0j6CJOJxR6t9PX9lkYkyuoFX1iM1UJCE.jpg", "http://www.clipartkid.com/images/811/wonder-woman-by-chazzyllama-fan-art-cartoons-comics-traditional-other-hziNSw-clipart.png", "https://s-media-cache-ak0.pinimg.com/236x/a4/ab/4f/a4ab4f4031017c75ed3d572a6d97d024.jpg", "http://dy6g3i6a1660s.cloudfront.net/dzhU0pveErDcQMZZnrea_wQABAA/lb-ad/favorite-female-cartoons.jpg", "http://images6.fanpop.com/image/polls/1288000/1288040_1381018719559_full.jpg?v=1381019042", "https://s-media-cache-ak0.pinimg.com/736x/ac/7b/56/ac7b56dc0fec98cb27befd7842876369.jpg", "https://s-media-cache-ak0.pinimg.com/564x/2b/54/70/2b54704a5228f30be69fad8185a6c43d.jpg"]
         
-        var counter = 100
+        let maleUrlArray = ["https://s-media-cache-ak0.pinimg.com/736x/ac/7b/56/ac7b56dc0fec98cb27befd7842876369.jpg", "https://s-media-cache-ak0.pinimg.com/originals/5c/a6/4d/5ca64d21b4057551c594c8e69b942efb.jpg"]
+    
+        let maleNameArray = ["dwayneJohnson", "underDog"]
         
-        for urlString in urlArray {
+        let femaleUrlArray = ["http://images.fanpop.com/images/image_uploads/Reese-Witherspoon--reese-witherspoon-79941_1024_768.jpg"]
+    
+        let femaleNameArray = ["reeseWitherspoon"]
+    
+    func seedDB(imageArray:[String], nameArray: [String], genderMale: Bool, interestMale: Bool){
+        
+        var counter = 0
+        
+        for urlString in imageArray {
             let url = URL(string: urlString)
             
             do {
@@ -176,25 +188,41 @@ class ViewController: UIViewController {
                 let data = try Data(contentsOf: url!)
                 let imageFile = PFFile(name: "image.jpeg", data: data)
                 seedUser["userImage"] = imageFile
-                seedUser.username = String(counter)
+                seedUser.username = nameArray[counter]
                 seedUser.password = "password"
-                seedUser["interestMale"] = true
-                seedUser["genderMale"] = false
+                seedUser["interestMale"] = interestMale
+                seedUser["genderMale"] = genderMale
                 seedUser["isGay"] = false
+                seedUser["acceptedArr"] = [String]()
+                seedUser["rejectedArr"] = [String]()
                 
                 // Allow editing of user record
                 let acl = PFACL()
                 acl.getPublicWriteAccess = true
+                acl.getPublicReadAccess = true
                 seedUser.acl = acl
                 
-                //save seedUser
-                seedUser.signUpInBackground(block: { (success, error) in
-                    if error != nil {
-                        print("Error saving seed DB user", counter)
-                    } else {
-                        print("Saved seed DB user", counter)
+                //Save default location for seed users
+                    
+                    PFGeoPoint.geoPointForCurrentLocation { (geopoint, error) in
+                        print("saveCurrUserLocation returned")
+                        if let geopoint = geopoint {
+                            
+                            seedUser["location"] = geopoint
+                            
+                            //save seedUser
+                            seedUser.signUpInBackground(block: { (success, error) in
+                                if error != nil {
+                                    print("Error saving seed DB user", seedUser.username)
+                                } else {
+                                    print("Saved seed DB user", seedUser.username)
+                                }
+                            })
+                            
+                        }
                     }
-                })
+                
+
                 
                 
             } catch {

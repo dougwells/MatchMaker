@@ -80,9 +80,15 @@ class ChooseMatchViewController: UIViewController {
         if PFUser.current()?["acceptedArr"] == nil {
             PFUser.current()?["acceptedArr"] = [String]()
         }
+        
         if PFUser.current()?["rejectedArr"] == nil {
             PFUser.current()?["rejectedArr"] = [String]()
         }
+        
+        if PFUser.current()?["location"] == nil {
+            PFUser.current()?["location"] = (0,0)
+        }
+        
         let query = PFUser.query()  //get all data rows in User
         
         query?.whereKey("interestMale", equalTo: PFUser.current()?["genderMale"]!)
@@ -155,7 +161,8 @@ class ChooseMatchViewController: UIViewController {
         PFGeoPoint.geoPointForCurrentLocation { (geopoint, error) in
             print("saveCurrUserLocation returned")
             if let geopoint = geopoint {
-                
+                PFUser.current()?["location"] = geopoint as? PFGeoPoint
+                PFUser.current()?.saveInBackground()
             }
         }
     }
