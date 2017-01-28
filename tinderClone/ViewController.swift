@@ -102,7 +102,9 @@ class ViewController: UIViewController {
                             displayErrorMessage = errorMessage.userInfo["error"] as! String
                         }
                         print("== Alert ==", displayErrorMessage)
-                        //self.createAlert(title: "Login Error(s)", message: displayErrorMessage)
+                        
+                        //Comment createAlert to avoid login bug
+                        self.createAlert(title: "Login Error(s)", message: displayErrorMessage)
                         return
                         
                     } else if user?["genderMale"] != nil
