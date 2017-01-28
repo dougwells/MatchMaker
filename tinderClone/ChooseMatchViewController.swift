@@ -30,7 +30,10 @@ class ChooseMatchViewController: UIViewController {
     
     @IBAction func matchToLogin(_ sender: Any) {
         
-        PFUser.logOutInBackground { (error) in
+        PFUser.logOut()
+        self.performSegue(withIdentifier: "matchToLogin", sender: self)
+        
+        /* PFUser.logOutInBackground { (error) in
             if error != nil {
                 print("Error logging user out")
             } else {
@@ -38,6 +41,7 @@ class ChooseMatchViewController: UIViewController {
                 self.performSegue(withIdentifier: "matchToLogin", sender: self)
             }
         }
+        */
     }
 
     @IBAction func resetMatches(_ sender: Any) {

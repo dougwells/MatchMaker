@@ -19,6 +19,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var changeSignupModeButton: UIButton!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var signupOrLoginButton: UIButton!
+
+
+
     
     let activityIndicator = UIActivityIndicatorView.init(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
     
@@ -43,6 +46,8 @@ class ViewController: UIViewController {
     
     @IBAction func signupOrLogin(_ sender: Any) {
         
+
+        
         if emailTextField.text == "" || passwordTextField.text == "" {
             
             createAlert(title: "Error in form", message: "Please enter both username and password")
@@ -56,6 +61,7 @@ class ViewController: UIViewController {
                 let user = PFUser()
                 user.username = emailTextField.text
                 user.password = passwordTextField.text
+                print("== username & password ==", user.username, user.password)
                 
                 
                 //Let public write to User field (ACL)
@@ -79,6 +85,7 @@ class ViewController: UIViewController {
                             if let errorMessage = error as NSError? {
                                 displayErrorMessage = errorMessage.userInfo["error"] as! String
                             }
+                            print("== Alert ==", displayErrorMessage)
                             self.createAlert(title: "Signup Error", message: displayErrorMessage)
                         }
                         return
@@ -89,19 +96,20 @@ class ViewController: UIViewController {
                     self.stopSpinner()
 
                     if error != nil {
-                        print("Error logging in existing user", error)
+                        print("== Error logging in existing user  ", user?.username, error)
                         var displayErrorMessage = "Please try again later ..."
                         if let errorMessage = error as NSError? {
                             displayErrorMessage = errorMessage.userInfo["error"] as! String
                         }
-                        self.createAlert(title: "Login Error", message: displayErrorMessage)
+                        print("== Alert ==", displayErrorMessage)
+                        //self.createAlert(title: "Login Error(s)", message: displayErrorMessage)
                         return
                         
-                    } else {
-                        
-                        if user?["genderMale"] != nil
+                    } else if user?["genderMale"] != nil
                             && user?["interestMale"] != nil
-                            && user?["userImage"] != nil {
+                            && user?["userImage"] != nil
+                        
+                        {
                             self.performSegue(withIdentifier: "showMatchesFromLogin", sender: self)
                             
                         } else {
@@ -109,7 +117,7 @@ class ViewController: UIViewController {
                             self.performSegue(withIdentifier: "showProfile", sender: self)
                         }
                         return
-                    }
+                    
                 })
             }
             
@@ -140,7 +148,10 @@ class ViewController: UIViewController {
         
         //add button to alert
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            print("=== Alert OK pressed")
             self.dismiss(animated: true, completion: nil)
+            return
+
         }))
         
         //present alert
@@ -156,9 +167,9 @@ class ViewController: UIViewController {
         
         
         //Seed Database if needed
-            seedDB(imageArray: maleUrlArray, nameArray: maleNameArray, genderMale: true, interestMale: false)
+            //seedDB(imageArray: maleUrlArray, nameArray: maleNameArray, genderMale: true, interestMale: false)
         
-            seedDB(imageArray: femaleUrlArray, nameArray: femaleNameArray, genderMale: false, interestMale: true)
+            //seedDB(imageArray: femaleUrlArray, nameArray: femaleNameArray, genderMale: false, interestMale: true)
 
         
     }

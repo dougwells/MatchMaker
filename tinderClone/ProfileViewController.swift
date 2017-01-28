@@ -130,20 +130,38 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
     } //end updateProfile
     
 
+    //Logout
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("Before logout. Username =", PFUser.current()?.username)
+        if segue.identifier == "profileToLogin" {
+            PFUser.logOut()
+            print("Logged out user,", PFUser.current()?.username)
+        }
+    }
     
+    //This code does not work for logout.
+    /*
     @IBAction func logoutButton(_ sender: Any) {
+        
+        /*
+        PFUser.logOutInBackground()
+        self.performSegue(withIdentifier: "showLoginPage", sender: self)
+
         
         PFUser.logOutInBackground { (error) in
             if error != nil {
                 print("Error logging user out")
             } else {
-                print("Existing user logged out")
-                self.performSegue(withIdentifier: "showLoginPage", sender: self)
+                print("Existing user logged out", PFUser.current()?.username)
+                self.performSegue(withIdentifier: "profileToLogin", sender: self)
             }
         }
+        */
+        
         
     }
+    */
     
     @IBAction func findAMatch(_ sender: UIBarButtonItem) {
         

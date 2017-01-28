@@ -224,7 +224,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O1a-2O-ahH" id="fKF-T9-r8B">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pcj-hC-CLe">
@@ -385,8 +385,7 @@
                                 <items>
                                     <barButtonItem title="Logout" id="fwR-B8-ejz">
                                         <connections>
-                                            <action selector="logoutButton:" destination="44g-ym-M5T" id="tSk-Bb-mDy"/>
-                                            <segue destination="BYZ-38-t0r" kind="show" identifier="showLoginPage" id="yR7-XE-ZCT"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="profileToLogin" id="aZs-zf-uRN"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="evw-c4-1w5"/>
@@ -432,8 +431,8 @@
         <image name="thumbsUp.png" width="225" height="224"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YWu-jr-bln"/>
-        <segue reference="BdW-lZ-NNp"/>
+        <segue reference="swZ-eK-NgL"/>
         <segue reference="2J8-ro-0yG"/>
+        <segue reference="aZs-zf-uRN"/>
     </inferredMetricsTieBreakers>
 </document>
