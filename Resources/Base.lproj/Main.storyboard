@@ -39,7 +39,7 @@
                                 <color key="textColor" red="0.91405659910000003" green="0.90060776470000004" blue="0.91740304230000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="dougwells" borderStyle="roundedRect" placeholder="Enter username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iy1-Ex-hro">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="dougWells" borderStyle="roundedRect" placeholder="Enter username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iy1-Ex-hro">
                                 <rect key="frame" x="24" y="454" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -432,8 +432,8 @@
         <image name="thumbsUp.png" width="225" height="224"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="obJ-07-iy4"/>
+        <segue reference="YWu-jr-bln"/>
         <segue reference="BdW-lZ-NNp"/>
-        <segue reference="Dpg-Um-JcM"/>
+        <segue reference="2J8-ro-0yG"/>
     </inferredMetricsTieBreakers>
 </document>

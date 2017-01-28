@@ -168,13 +168,13 @@ class ViewController: UIViewController {
         
         //let urlArray = ["http://www.mytinyphone.com/uploads/users/whytchocolate30/400357.jpg", "http://3.bp.blogspot.com/_do469iTlR78/SnNtkgOnDZI/AAAAAAAAABU/pLVl94AS6Ts/s400/simpsons_marge.widec.jpg", "http://worldlistz.com/wp-content/uploads/2016/03/Pocahontas.jpg", "http://www.telegraph.co.uk/content/dam/films/2016/04/12/FC_Thelma_2752282k-xlarge_trans++omrcOiT85RE0j6CJOJxR6t9PX9lkYkyuoFX1iM1UJCE.jpg", "http://www.clipartkid.com/images/811/wonder-woman-by-chazzyllama-fan-art-cartoons-comics-traditional-other-hziNSw-clipart.png", "https://s-media-cache-ak0.pinimg.com/236x/a4/ab/4f/a4ab4f4031017c75ed3d572a6d97d024.jpg", "http://dy6g3i6a1660s.cloudfront.net/dzhU0pveErDcQMZZnrea_wQABAA/lb-ad/favorite-female-cartoons.jpg", "http://images6.fanpop.com/image/polls/1288000/1288040_1381018719559_full.jpg?v=1381019042", "https://s-media-cache-ak0.pinimg.com/736x/ac/7b/56/ac7b56dc0fec98cb27befd7842876369.jpg", "https://s-media-cache-ak0.pinimg.com/564x/2b/54/70/2b54704a5228f30be69fad8185a6c43d.jpg"]
         
-        let maleUrlArray = ["https://s-media-cache-ak0.pinimg.com/736x/ac/7b/56/ac7b56dc0fec98cb27befd7842876369.jpg", "https://s-media-cache-ak0.pinimg.com/originals/5c/a6/4d/5ca64d21b4057551c594c8e69b942efb.jpg"]
+        let maleUrlArray = ["https://s-media-cache-ak0.pinimg.com/736x/ac/7b/56/ac7b56dc0fec98cb27befd7842876369.jpg", "https://s-media-cache-ak0.pinimg.com/originals/5c/a6/4d/5ca64d21b4057551c594c8e69b942efb.jpg", "https://s-media-cache-ak0.pinimg.com/564x/3e/a2/4b/3ea24b0ef72031c80ea464ca02b9f803.jpg", "http://www.gannett-cdn.com/-mm-/87fb71e345ef0e6194cb09c15a6219589042cb45/c=2443-57-4792-1381&r=x329&c=580x326/local/-/media/USATODAY/popcandy/2013/08/29/1377791479000-bacon.jpg", "http://static.socialitelife.com/uploads/2013/08/30/color-me-swoon-08302013-05-580x435.jpg", "https://s-media-cache-ak0.pinimg.com/564x/bc/83/64/bc8364b6ab38e99e0dae99aa42f2570f.jpg","https://s-media-cache-ak0.pinimg.com/236x/6b/21/b8/6b21b84d4c5c44b7b20bf72dcbe0c87e.jpg"]
     
-        let maleNameArray = ["dwayneJohnson", "underDog"]
+        let maleNameArray = ["dwayneJohnson", "underDog", "uncleJeb", "kevinBacon", "ryanGosling", "robertDowney", "dougWells"]
         
-        let femaleUrlArray = ["http://images.fanpop.com/images/image_uploads/Reese-Witherspoon--reese-witherspoon-79941_1024_768.jpg"]
+        let femaleUrlArray = ["http://images.fanpop.com/images/image_uploads/Reese-Witherspoon--reese-witherspoon-79941_1024_768.jpg", "http://orig14.deviantart.net/78ab/f/2013/309/6/c/audrey_hepburn_by_kewlgrl11396-d6t7ncp.jpg", "http://www.thewallpapers.org/photo/6797/Meg-Ryan-009.jpg", "https://s-media-cache-ak0.pinimg.com/736x/8b/9a/9d/8b9a9d5bc0c7a10bbab86e22513cc266.jpg", "https://s-media-cache-ak0.pinimg.com/originals/29/22/c5/2922c555a055272a0cbcbeadb0057452.jpg", "http://i.imgur.com/nrBMnaB.png"]
     
-        let femaleNameArray = ["reeseWitherspoon"]
+        let femaleNameArray = ["reeseWitherspoon", "audreyHepburn", "lindaWells", "crystal", "jessicaRabbit", "margeSimpson"]
     
     func seedDB(imageArray:[String], nameArray: [String], genderMale: Bool, interestMale: Bool){
         
