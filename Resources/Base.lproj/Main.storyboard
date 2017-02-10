@@ -98,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-188" y="-1005"/>
+            <point key="canvasLocation" x="-311" y="-1005"/>
         </scene>
         <!--Choose Match View Controller-->
         <scene sceneID="kvO-7L-qa6">
@@ -224,7 +224,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="113"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O1a-2O-ahH" id="fKF-T9-r8B">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="112"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pcj-hC-CLe">
@@ -431,8 +431,8 @@
         <image name="thumbsUp.png" width="225" height="224"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="swZ-eK-NgL"/>
-        <segue reference="2J8-ro-0yG"/>
         <segue reference="aZs-zf-uRN"/>
+        <segue reference="2J8-ro-0yG"/>
+        <segue reference="YWu-jr-bln"/>
     </inferredMetricsTieBreakers>
 </document>

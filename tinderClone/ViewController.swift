@@ -103,8 +103,7 @@ class ViewController: UIViewController {
                         }
                         print("== Alert ==", displayErrorMessage)
                         
-                        //Comment out createAlert to avoid login bug
-                        //self.createAlert(title: "Login Error(s)", message: displayErrorMessage)
+                        self.createAlert(title: "Login Error(s)", message: displayErrorMessage)
                         return
                         
                     } else if user?["genderMale"] != nil
@@ -148,13 +147,8 @@ class ViewController: UIViewController {
         //creat alert
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         
-        //add button to alert
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
-            print("=== Alert OK pressed")
-            self.dismiss(animated: true, completion: nil)
-            return
-
-        }))
+        //add button to alert (note, bug when handler expanded to block code.  Use "nil")
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         //present alert
         self.present(alert, animated: true, completion: nil)
