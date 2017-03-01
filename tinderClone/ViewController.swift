@@ -168,7 +168,7 @@ class ViewController: UIViewController {
             seedDB(imageArray: maleUrlArray, nameArray: maleNameArray, genderMale: true, interestMale: false)
         
             seedDB(imageArray: femaleUrlArray, nameArray: femaleNameArray, genderMale: false, interestMale: true)
-        
+            
 
         
     }
