@@ -61,6 +61,7 @@ class ViewController: UIViewController {
                 let user = PFUser()
                 user.username = emailTextField.text
                 user.password = passwordTextField.text
+                user["appName"] = "tinderClone"
                 print("== username & password ==", user.username, user.password)
                 
                 
@@ -163,9 +164,11 @@ class ViewController: UIViewController {
         
         
         //Seed Database if needed
-            //seedDB(imageArray: maleUrlArray, nameArray: maleNameArray, genderMale: true, interestMale: false)
         
-            //seedDB(imageArray: femaleUrlArray, nameArray: femaleNameArray, genderMale: false, interestMale: true)
+            seedDB(imageArray: maleUrlArray, nameArray: maleNameArray, genderMale: true, interestMale: false)
+        
+            seedDB(imageArray: femaleUrlArray, nameArray: femaleNameArray, genderMale: false, interestMale: true)
+        
 
         
     }
@@ -202,6 +205,7 @@ class ViewController: UIViewController {
                 seedUser["userImage"] = imageFile
                 seedUser.username = nameArray[counter]
                 seedUser.password = "password"
+                seedUser["appName"] = "tinderClone"
                 seedUser["interestMale"] = interestMale
                 seedUser["genderMale"] = genderMale
                 seedUser["isGay"] = false
