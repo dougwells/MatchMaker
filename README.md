@@ -17,6 +17,17 @@ MatchMaker helps singles find others who share their passions in life
 - Parse Server by Bitnami
 - Amazon EC2 Instance
 
+## How to run
+- Clone repository
+- To seed database
+    * Open project in Xcode
+    * Open ViewController.Swift
+    * Within viewDidLoad function, uncomment Seed Database section
+    * Run app in simulator & sign up a new account
+    * Database should now be seeded
+    * Recomment Seed Database section
+- Run app on simulator or on your device
+
 ## Screen Shots:
 Landing Page               |  Update Your Profile |  
 :-------------------------:|:-------------------------:|

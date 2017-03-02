@@ -164,11 +164,11 @@ class ViewController: UIViewController {
         
         
         //Seed Database if needed
+            /*
+                seedDB(imageArray: maleUrlArray, nameArray: maleNameArray, genderMale: true, interestMale: false)
         
-            seedDB(imageArray: maleUrlArray, nameArray: maleNameArray, genderMale: true, interestMale: false)
-        
-            seedDB(imageArray: femaleUrlArray, nameArray: femaleNameArray, genderMale: false, interestMale: true)
-            
+                seedDB(imageArray: femaleUrlArray, nameArray: femaleNameArray, genderMale: false, interestMale: true)
+            */
 
         
     }
