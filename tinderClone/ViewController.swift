@@ -32,7 +32,7 @@ class ViewController: UIViewController {
             //Change layout to login
             
             signupOrLoginButton.setTitle("Log In", for: [])
-            messageLabel.text = "Don't have an account?"
+            messageLabel.text = "No account?"
             changeSignupModeButton.setTitle("Sign Up", for: [])
             
         } else {
@@ -195,8 +195,8 @@ class ViewController: UIViewController {
                 seedDB(imageArray: maleUrlArray, nameArray: maleNameArray, genderMale: true, interestMale: false)
         
                 seedDB(imageArray: femaleUrlArray, nameArray: femaleNameArray, genderMale: false, interestMale: true)
-        
             */
+ 
         
     }
 

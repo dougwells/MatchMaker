@@ -86,7 +86,7 @@ class MatchesViewController: UIViewController, UITableViewDelegate, UITableViewD
                                         message is show to user
                                     */
                                             
-                                            var messageText = "No messages yet. Please check back later"
+                                            var messageText = "No messages yet. Please try back later."
                                             
                                             if let messages = objects {
                                                 
