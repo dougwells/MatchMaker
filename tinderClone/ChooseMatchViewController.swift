@@ -99,7 +99,7 @@ class ChooseMatchViewController: UIViewController {
         query?.whereKey("genderMale", equalTo: PFUser.current()?["interestMale"]!)
         query?.whereKey("objectId", notContainedIn: PFUser.current()?["rejectedArr"]! as! [Any])
         
-        query?.whereKey("location", nearGeoPoint: PFUser.current()?["location"]! as! PFGeoPoint, withinMiles: 1000000)
+        query?.whereKey("location", nearGeoPoint: PFUser.current()?["location"]! as! PFGeoPoint, withinMiles: 100)
         
         
         

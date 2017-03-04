@@ -56,42 +56,69 @@ class ViewController: UIViewController {
             
         } else {
             startSpinner()
+            
             if signupMode {  //signup Mode
-                // Save user in Parse
-                let user = PFUser()
-                user.username = emailTextField.text
-                user.password = passwordTextField.text
-                user["appName"] = "tinderClone"
-                print("== username & password ==", user.username, user.password)
                 
-                
-                //Let public write to User field (ACL)
-                let acl = PFACL()
-                acl.getPublicWriteAccess = true
-                user.acl = acl
-                
-                
-                user.signUpInBackground { (success, error) -> Void in
-                    self.stopSpinner()
-                    if success {
-                        print("New user \(user.username!) saved")
+                PFGeoPoint.geoPointForCurrentLocation { (geopoint, error) in
+                    print("saveCurrUserLocation returned")
+                    if let geopoint = geopoint {
                         
-                        self.performSegue(withIdentifier: "showProfile", sender: self)
-                        return
                         
-                    } else {
-                        if error != nil {
-                            print("Error saving user")
-                            var displayErrorMessage = "Please try again later ..."
-                            if let errorMessage = error as NSError? {
-                                displayErrorMessage = errorMessage.userInfo["error"] as! String
+                        // Save user in Parse
+                        let user = PFUser()
+                        user.username = self.emailTextField.text
+                        user.password = self.passwordTextField.text
+                        user["appName"] = "tinderClone"
+                        user["rejectedArr"] = [String]()
+                        user["acceptedArr"] = [String]()
+                        user["genderMale"] = true
+                        user["isGay"] = false
+                        user["interestMale"] = false
+                        user["location"] = geopoint
+                        
+                        let imageData = UIImageJPEGRepresentation(#imageLiteral(resourceName: "cruiseCartoon.jpg"), 0.5)
+                        let imageFile = PFFile(name: "image.jpeg", data: imageData!)
+                        user["userImage"] = imageFile
+                        
+                        print("== username & password ==", user.username, user.password!)
+                        
+                        //Let public write to User field (ACL)
+                        let acl = PFACL()
+                        acl.getPublicWriteAccess = true
+                        user.acl = acl
+                        
+                        
+                        user.signUpInBackground { (success, error) -> Void in
+                            self.stopSpinner()
+                            if success {
+                                print("New user \(user.username!) saved")
+                                
+                                OperationQueue.main.addOperation({
+                                    self.performSegue(withIdentifier: "showProfile", sender: self)
+                                })
+                                
+                                return
+                                
+                            } else {
+                                if error != nil {
+                                    print("Error saving user")
+                                    var displayErrorMessage = "Please try again later ..."
+                                    if let errorMessage = error as NSError? {
+                                        displayErrorMessage = errorMessage.userInfo["error"] as! String
+                                    }
+                                    print("== Alert ==", displayErrorMessage)
+                                    self.createAlert(title: "Signup Error", message: displayErrorMessage)
+                                }
+                                return
                             }
-                            print("== Alert ==", displayErrorMessage)
-                            self.createAlert(title: "Signup Error", message: displayErrorMessage)
                         }
-                        return
+                        
                     }
                 }
+
+                
+                
+
             } else {    // Login mode
                 PFUser.logInWithUsername(inBackground: emailTextField.text!, password: passwordTextField.text!, block: { (user, error) in
                     self.stopSpinner()
@@ -164,12 +191,12 @@ class ViewController: UIViewController {
         
         
         //Seed Database if needed
-        
+            /*
                 seedDB(imageArray: maleUrlArray, nameArray: maleNameArray, genderMale: true, interestMale: false)
         
                 seedDB(imageArray: femaleUrlArray, nameArray: femaleNameArray, genderMale: false, interestMale: true)
         
-
+            */
         
     }
 

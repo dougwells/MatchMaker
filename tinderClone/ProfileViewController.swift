@@ -112,6 +112,7 @@ class ProfileViewController: UIViewController, UINavigationControllerDelegate, U
         user?["genderMale"] = genderMale
         user?["interestMale"] = interestMale
         user?["isGay"] = isGay
+        user?["acceptedArr"] = [String]()
         
         
         let imageData = UIImageJPEGRepresentation(imageToPost.image!, 0.5)
