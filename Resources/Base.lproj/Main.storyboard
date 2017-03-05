@@ -35,16 +35,6 @@
                                 <color key="textColor" red="1" green="1" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have account?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Im-Bn-Zc2">
-                                <rect key="frame" x="16" y="241" width="212" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="e3v-De-LZR"/>
-                                    <constraint firstAttribute="width" constant="212" id="kWR-WI-6t9"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.91405659910000003" green="0.90060776470000004" blue="0.91740304230000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="dougWells" borderStyle="roundedRect" placeholder="Enter username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iy1-Ex-hro">
                                 <rect key="frame" x="16" y="112" width="343" height="30"/>
                                 <constraints>
@@ -64,7 +54,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3zU-bP-NQT">
-                                <rect key="frame" x="140.5" y="200" width="94" height="40"/>
+                                <rect key="frame" x="141" y="200" width="94" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="GbR-gQ-tJw"/>
                                     <constraint firstAttribute="width" constant="94" id="oZy-h5-5tP"/>
@@ -87,7 +77,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zVu-YW-rra">
-                                <rect key="frame" x="236" y="241" width="93" height="24"/>
+                                <rect key="frame" x="244" y="241" width="93" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="8Bk-g8-qBS"/>
                                     <constraint firstAttribute="width" constant="93" id="C3m-2t-ynS"/>
@@ -100,6 +90,16 @@
                                     <action selector="changeSignupMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ll9-lI-zbD"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Existing Account?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Im-Bn-Zc2">
+                                <rect key="frame" x="36" y="241" width="200" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="e3v-De-LZR"/>
+                                    <constraint firstAttribute="width" constant="200" id="kWR-WI-6t9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.91405659910000003" green="0.90060776470000004" blue="0.91740304230000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -113,7 +113,7 @@
                             <constraint firstItem="3zU-bP-NQT" firstAttribute="top" secondItem="Pta-93-kxJ" secondAttribute="bottom" constant="20" id="THT-1J-afP"/>
                             <constraint firstItem="6Im-Bn-Zc2" firstAttribute="top" secondItem="3zU-bP-NQT" secondAttribute="bottom" constant="1" id="TcP-I6-CYp"/>
                             <constraint firstItem="zVu-YW-rra" firstAttribute="leading" secondItem="6Im-Bn-Zc2" secondAttribute="trailing" constant="8" id="V69-w8-QaW"/>
-                            <constraint firstItem="6Im-Bn-Zc2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="aJs-Aq-vek"/>
+                            <constraint firstItem="6Im-Bn-Zc2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="aJs-Aq-vek"/>
                             <constraint firstItem="aKW-yZ-3QB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="bYa-Tf-OBm"/>
                             <constraint firstItem="3zU-bP-NQT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d73-BE-dr0"/>
                             <constraint firstItem="brm-nQ-fj9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="ds3-pH-BgW"/>
@@ -564,7 +564,7 @@
         <image name="thumbsUp.png" width="225" height="224"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="obJ-07-iy4"/>
+        <segue reference="YWu-jr-bln"/>
         <segue reference="BdW-lZ-NNp"/>
         <segue reference="2J8-ro-0yG"/>
     </inferredMetricsTieBreakers>
