@@ -119,6 +119,8 @@ class ChooseMatchViewController: UIViewController {
                 print("Error getting users", error)
                 
             } else if let users = objects {
+                
+                print("# of potential matches found: \(users.count)")
 
                 for object in users {
                     
@@ -132,7 +134,7 @@ class ChooseMatchViewController: UIViewController {
                     }
                 }
             }
-            print("--- image array complete ---")
+            print("--- img arr done, count=\(self.imageArr.count) ---")
             self.moveToNextImage()
         })
     } //end function getMateImages
